@@ -1,0 +1,161 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/black-dashboard.css' %}">
+
+        <link href="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet">
+
+        <!--     Fonts and icons     -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+        <link href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" rel="stylesheet">
+
+        <!-- Nucleo Icons -->
+        <link href="{% static 'css/nucleo-icons.css' %}" rel="stylesheet" />
+                
+        <!-- Core JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.js" %}></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+
+        <!-- Chart JS -->
+        <script src="{% static 'js/chartjs.min.js' %}"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" %}></script>
+        
+        <!-- Tagsinput -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+        <script src="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+
+    </head>
+    <body class="white-content">
+      <div class="wrapper">
+        <div class="navbar-minimize-fixed">
+          <button class="minimize-sidebar btn btn-link btn-just-icon">
+            <i class="tim-icons icon-align-center visible-on-sidebar-regular text-muted"></i>
+            <i class="tim-icons icon-bullet-list-67 visible-on-sidebar-mini text-muted"></i>
+          </button>
+        </div>
+        <div class="sidebar" data="green">
+          <!--
+            Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+        -->
+          <div class="sidebar-wrapper">
+            <ul class="nav">
+              <li {% if request.path == '/index' or request.path == '/'%} class="active" {% endif %}>
+                <a href="/index">
+                  <i style="color:black;" class="tim-icons icon-components"></i>
+                  <p style="color:black;">Overview</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="main-panel" data="green">
+          <!-- Navbar -->
+          <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+            <div class="container-fluid">
+              <div class="navbar-wrapper">
+                <div class="navbar-minimize d-inline">
+                  <button class="minimize-sidebar btn btn-link btn-just-icon">
+                    <i class="tim-icons icon-align-center visible-on-sidebar-regular"></i>
+                    <i class="tim-icons icon-bullet-list-67 visible-on-sidebar-mini"></i>
+                  </button>
+                </div>
+                <div class="navbar-toggle d-inline">
+                  <button type="button" class="navbar-toggler">
+                    <span class="navbar-toggler-bar bar1"></span>
+                    <span class="navbar-toggler-bar bar2"></span>
+                    <span class="navbar-toggler-bar bar3"></span>
+                  </button>
+                </div>
+                <a class="navbar-brand" href="javascript:void(0)">Rezepte</a>
+              </div>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-bar navbar-kebab"></span>
+                <span class="navbar-toggler-bar navbar-kebab"></span>
+                <span class="navbar-toggler-bar navbar-kebab"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navigation">
+                <ul class="navbar-nav ml-auto">
+                  <li class="dropdown nav-item">
+                    <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
+              <!--
+              <div class="notification d-none d-lg-block d-xl-block"></div>
+              -->
+                      <i class="tim-icons icon-single-02"></i>
+                      <p class="d-lg-none">
+                        User
+                      </p>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
+                        <li>
+                            <p class="dropdown-item" style="pointer-events:none">{{request.user}}</p>
+                          </li>
+                          <li class="nav-link">
+                              <a href="/accounts/logout" class="nav-item dropdown-item">Log out</a>
+                            </li>
+                              </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="tim-icons icon-simple-remove"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Navbar -->
+          <div class="content">
+              {% block content %}
+              {% endblock %}
+          
+            <footer class="footer">
+              <div class="container-fluid">
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="/tandc">Terms & Conditions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/privacy">Privacy Policy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cookies">Cookie Policy</a></li>
+                  </ul>
+                <div class="copyright">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear())
+                  </script> by
+                  <a href="javascript:void(0)" target="_blank">Rezepte</a>
+                </div>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+
+      <!--   Reload JS   -->
+    <script src="{% static 'js/perfect-scrollbar.jquery.min.js' %}"></script>
+    <script src="{% static 'js/moment.min.js' %}"></script>
+
+    <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+    <script src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>
+
+    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
+    <script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+    
+    <!-- Core JS -->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- Chart JS -->
+    <script src="{% static 'js/chartjs.min.js' %}"></script>
+
+    <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="{% static 'js/black-dashboard.min.js' %}"></script>
+    </body>
+</html>
