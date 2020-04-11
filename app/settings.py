@@ -25,7 +25,7 @@ SECRET_KEY = '+cj-_c)q^6#&a)$ezl+6jo0uxz_htsqp88l-7=_$zm(h*jd268'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'rezeptothek.herokuapp.com']
 
 
 # Application definition
