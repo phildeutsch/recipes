@@ -1,34 +1,7 @@
+{% extends 'base_head.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/black-dashboard.css' %}">
-
-        <link href="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet">
-
-        <!--     Fonts and icons     -->
-        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
-        <link href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" rel="stylesheet">
-
-        <!-- Nucleo Icons -->
-        <link href="{% static 'css/nucleo-icons.css' %}" rel="stylesheet" />
-                
-        <!-- Core JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.js" %}></script>
-        <script src="{% static 'js/popper.min.js' %}"></script>
-
-        <!-- Chart JS -->
-        <script src="{% static 'js/chartjs.min.js' %}"></script>
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" %}></script>
-        
-        <!-- Tagsinput -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
-        <script src="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
-
-    </head>
-    <body class="white-content">
+{% block base %}
       <div class="wrapper">
         <div class="navbar-minimize-fixed">
           <button class="minimize-sidebar btn btn-link btn-just-icon">
@@ -157,5 +130,4 @@
 
     <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{% static 'js/black-dashboard.min.js' %}"></script>
-    </body>
-</html>
+{% endblock %}

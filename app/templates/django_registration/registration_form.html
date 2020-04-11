@@ -1,5 +1,5 @@
-{% extends "registration/registration_base.html" %}
-{% load staticfiles %}
+{% extends "django_registration/registration_base.html" %}
+{% load static %}
 
 {% block content %}
 
@@ -56,13 +56,12 @@
       <div class="col-md-7 ml-auto mr-auto">
         <div class="card card-register card-white">
           <div class="card-header">
-            <img class="card-img" src={% static "img/card-info.png"%} alt="">
+            <img class="card-img" src="{% static 'img/card-info.png' %}" alt="">
             <h4 class="card-title">Register</h4>
           </div>
           <div class="card-body">
             <form method="post" class="form-signin">
             {% csrf_token %}
-            {{ form.username }}
             <div class="input-group">
                 <div class="input-group-prepend">
                   <div class="input-group-text">

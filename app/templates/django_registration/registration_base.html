@@ -1,5 +1,5 @@
 {% extends "base_head.html" %}
-{% load staticfiles %}
+{% load static %}
 
 {% block base %}
   <div class="wrapper wrapper-full-page ">
@@ -10,7 +10,7 @@
                 {% if user.is_authenticated %}
                   <li class="nav-item">
                     <a href="/" class="nav-link text-primary">
-                      <i class="tim-icons icon-minimal-left"></i> Back to Dashboard
+                      <i class="tim-icons icon-minimal-left"></i> Zur Rezeptothek
                     </a>
                   </li>
                 {% else %}          
