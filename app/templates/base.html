@@ -9,22 +9,22 @@
             <i class="tim-icons icon-bullet-list-67 visible-on-sidebar-mini text-muted"></i>
           </button>
         </div>
-        <div class="sidebar" data="green">
+        <div class="sidebar">
           <!--
             Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
         -->
           <div class="sidebar-wrapper">
-            <ul class="nav">
+            <ul class="nav" >
               <li {% if request.path == '/index' or request.path == '/'%} class="active" {% endif %}>
                 <a href="/index">
-                  <i style="color:black;" class="tim-icons icon-components"></i>
-                  <p style="color:black;">Overview</p>
+                  <i class="tim-icons icon-components"></i>
+                  <p>Gerichte</p>
                 </a>
               </li>
             </ul>
           </div>
         </div>
-        <div class="main-panel" data="green">
+        <div class="main-panel">
           <!-- Navbar -->
           <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
             <div class="container-fluid">
@@ -42,7 +42,7 @@
                     <span class="navbar-toggler-bar bar3"></span>
                   </button>
                 </div>
-                <a class="navbar-brand" href="javascript:void(0)">Rezepte</a>
+                <a class="navbar-brand" href="javascript:void(0)">Rezeptothek</a>
               </div>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -103,7 +103,7 @@
                   <script>
                     document.write(new Date().getFullYear())
                   </script> by
-                  <a href="javascript:void(0)" target="_blank">Rezepte</a>
+                  <a href="javascript:void(0)" target="_blank">Rezeptothek</a>
                 </div>
               </div>
             </footer>

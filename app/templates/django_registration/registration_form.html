@@ -1,4 +1,4 @@
-{% extends "django_registration/registration_base.html" %}
+{% extends "registration/registration_base.html" %}
 {% load static %}
 
 {% block content %}
@@ -11,44 +11,36 @@
     <div class="row">
         <div class="col-md-5 ml-auto">
             <div class="info-area info-horizontal mt-5">
-              <div class="icon icon-warning">
-                  <i class="fas fa-calendar-check"></i>
+              <div class="icon">
+                <i class="fas fa-calendar-check"></i>
               </div>
               <div class="description">
-              <h3 class="info-title">Keep track of your social activities</h3>
+              <h3 class="info-title">Organisiere deine Rezepte</h3>
               <p class="description">
-                One place for keeping track of what you've been up to and who you've met.
+                Die Rezeptothek gibt dir einen Überblick über deine Rezepte, und hilft dir deine Kockkünste zu verbessern.
               </p>
               </div>
             </div>
             <div class="info-area info-horizontal">
-              <div class="icon icon-warning">
+              <div class="icon">
                   <i class="fas fa-users"></i>
               </div>
               <div class="description">
-              <h3 class="info-title">Stay in touch</h3>
+              <h3 class="info-title">Teile deine Gerichte</h3>
               <p class="description">
-                  Never forget to keep in touch with Karen again or that it's time to catch up with Tom.
+                  Teile deine Kocherfolge mit Freunden und Familie.
                 </p>
               </div>
             </div>
             <div class="info-area info-horizontal">
-              <div class="icon icon-warning">
+              <div class="icon">
                 <i class="fas fa-tasks"></i>
               </div>
               <div class="description">
-                <h3 class="info-title">Rolodash</h3>
+                <h3 class="info-title">Tracke Einladungen</h3>
                 <p class="description">
-                    Rolodash keeps track of who you haven't seen for how long, and reminds you when you're overdue a catch up.
+                    Mache Notizen wie ein Gericht das nächste Mal noch besser gelingen kann.
                 </p>
-              </div>
-            </div>
-            <div class="info-area info-horizontal">
-              <div class="icon icon-info">
-                  <i class="tim-icons icon-triangle-right-17"></i>
-              </div>
-              <div class="description">
-                <h3 class="info-title"><a href="/info">How it works</a></h3>
               </div>
             </div>
           </div>
@@ -56,20 +48,28 @@
       <div class="col-md-7 ml-auto mr-auto">
         <div class="card card-register card-white">
           <div class="card-header">
-            <img class="card-img" src="{% static 'img/card-info.png' %}" alt="">
-            <h4 class="card-title">Register</h4>
+            <img class="card-img" src="{% static 'img/card-info.png' %}" alt="">            
+            <h5 class="card-title">neu</h5>
           </div>
           <div class="card-body">
             <form method="post" class="form-signin">
             {% csrf_token %}
             <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <i class="tim-icons icon-email-85"></i>
-                  </div>
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="tim-icons icon-single-02"></i>
                 </div>
-              <input type="email" name="email" required id="id_email" class="form-control" placeholder="Email"/>
+              </div>
+            <input type="username" name="username" required id="id_username" class="form-control" placeholder="Username"/>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i class="tim-icons icon-email-85"></i>
+              </div>
             </div>
+          <input type="email" name="email" required id="id_email" class="form-control" placeholder="Email"/>
+        </div>
             <div class="input-group">
               <div class="input-group-prepend">
                 <div class="input-group-text">
