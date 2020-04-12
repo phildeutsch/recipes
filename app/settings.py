@@ -24,7 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+cj-_c)q^6#&a)$ezl+6jo0uxz_htsqp88l-7=_$zm(h*jd268'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if 'ON_HEROKU' not in os.environ:
+if 'ON_HEROKU' in os.environ:
+    ON_HEROKU = True
+else:
     ON_HEROKU = False
 
 if ON_HEROKU:
