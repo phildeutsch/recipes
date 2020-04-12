@@ -4,19 +4,34 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                <div class="row">
-                    <div class="col-4">
-                        <h4 class="card-title">Gerichte</h4>
-                    </div>
-                    <div class="col-8" align="right">
-                        <a class="btn btn-primary" href="/add_dish">Gericht hinzufügen</a>
-                      </div>
-                </div>      
+                <div class="col-4">
+                    <h4 class="card-title">Gerichte</h4>
+                </div>
             </div>
             <div class="card-body">
-                {% for dish in dishes %}
-                    <p> {{ dish.name }} </p>
-                {% endfor %}
+                <div class="table-responsive" style="overflow: hidden">
+                    <table id="dashboard-table" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Typ</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dish in dishes %}
+                            <tr>
+                                <td><a class="badge badge-info" href="/edit_dish/{{dish.id}}">{{dish.name}}</a></td>
+                                <td>{{dish.type}}</td>
+                                <td><a class="badge badge-warning" href="/delete_dish/{{dish.id}}">Löschen</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" href="/add_dish">Gericht hinzufügen</a>
             </div>
         </div>
     </div>

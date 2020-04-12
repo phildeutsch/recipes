@@ -3,5 +3,8 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('add_dish', views.add_dish, name='add_dish')
+
+    # Dish URLs
+    path('add_dish', views.add_dish, name='add_dish'),
+    path('delete_dish/<int:dish_id>', views.delete_dish, name='delete_dish')
 ]

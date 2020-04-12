@@ -22,3 +22,10 @@ def add_dish(request):
             return redirect('/')
 
     return render(request, 'recipes/add_dish.html', {'form': form})
+
+@login_required
+def delete_dish(request, dish_id):
+    dish = get_object_or_404(Dish, pk=dish_id)
+    if dish.user==request.user:
+        dish.delete()
+    return redirect('/')
