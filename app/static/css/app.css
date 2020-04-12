@@ -1,3 +1,7 @@
-body {
-    background: lightblue;
-  }
+a.btn.btn-primary {
+  color: white;
+}
+
+a.btn.btn-secondary {
+  color: white;
+}
