@@ -13,13 +13,15 @@ def index(request):
 
 @login_required
 def add_dish(request):
-    form = DishForm(request.POST or None)
     if request.method == "POST":
+        form = DishForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.user = request.user
             post.save()
             return redirect('/')
+    else:
+        form = DishForm()
 
     return render(request, 'recipes/add_dish.html', {'form': form})
 

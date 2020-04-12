@@ -16,6 +16,7 @@
                                 <th>Name</th>
                                 <th>Typ</th>
                                 <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -23,6 +24,7 @@
                             <tr>
                                 <td><a class="badge badge-info" href="/edit_dish/{{dish.id}}">{{dish.name}}</a></td>
                                 <td>{{dish.type}}</td>
+                                <td><img src="{{ dish.picture }}" width="250"></td>
                                 <td><a class="badge badge-warning" href="/delete_dish/{{dish.id}}">Löschen</a></td>
                             </tr>
                             {% endfor %}

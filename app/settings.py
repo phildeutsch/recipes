@@ -31,6 +31,8 @@ else:
 
 if ON_HEROKU:
     DEBUG = False
+
+    # DB settings
     DB_NAME = os.environ['DB_NAME']
     DB_USERNAME = os.environ['DB_USERNAME']
     DB_PASSWORD = os.environ['DB_PASSWORD']
@@ -38,6 +40,8 @@ if ON_HEROKU:
     DB_PORT = os.environ['DB_PORT']
 else:
     DEBUG = True
+
+    # DB settings
     DB = 'DATABASE_LOCAL'
     # DB = 'DATABASE_PROD'
     config = configparser.ConfigParser()
@@ -47,6 +51,15 @@ else:
     DB_PASSWORD = config[DB]['DB_PASSWORD']
     DB_HOST = config[DB]['DB_HOST']
     DB_PORT = config[DB]['DB_PORT']
+
+    # AWS settings
+        # aws settings
+    AWS_ACCESS_KEY_ID = config['AWS']['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = config['AWS']['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = config['AWS']['AWS_STORAGE_BUCKET_NAME']
+    AWS_DEFAULT_ACL = None
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 
 # Set who can connect to DB
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'rezeptothek.herokuapp.com']
@@ -63,6 +76,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -144,13 +158,32 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Redirect users after login and logout
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Redirect users after login and logout
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+# Django Storages settings for S3
+STATICFILES_STORAGE = 'app.storage_backends.StaticStorage'
+DEFAULT_FILE_STORAGE = 'app.storage_backends.PublicMediaStorage'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# s3 static settings
+STATIC_LOCATION = 'static'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+
+# Media settings
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# AWS settings
+AWS_DEFAULT_ACL = None
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com'
