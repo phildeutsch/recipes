@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+import configparser
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -23,13 +24,33 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+cj-_c)q^6#&a)$ezl+6jo0uxz_htsqp88l-7=_$zm(h*jd268'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if 'ON_HEROKU' not in os.environ:
+    ON_HEROKU = False
 
+if ON_HEROKU:
+    DEBUG = False
+    DB_NAME = os.environ['DB_NAME']
+    DB_USERNAME = os.environ['DB_USERNAME']
+    DB_PASSWORD = os.environ['DB_PASSWORD']
+    DB_HOST = os.environ['DB_HOST']
+    DB_PORT = os.environ['DB_PORT']
+else:
+    DEBUG = True
+    DB = 'DATABASE_LOCAL'
+    # DB = 'DATABASE_PROD'
+    config = configparser.ConfigParser()
+    config.read('app/config.ini')
+    DB_NAME = config[DB]['DB_NAME']
+    DB_USERNAME = config[DB]['DB_USERNAME']
+    DB_PASSWORD = config[DB]['DB_PASSWORD']
+    DB_HOST = config[DB]['DB_HOST']
+    DB_PORT = config[DB]['DB_PORT']
+
+# Set who can connect to DB
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'rezeptothek.herokuapp.com']
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'app',
     'recipes',
@@ -79,8 +100,12 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': DB_NAME,
+        'USER': DB_USERNAME,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
     }
 }
 
