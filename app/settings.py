@@ -38,6 +38,11 @@ if ON_HEROKU:
     DB_PASSWORD = os.environ['DB_PASSWORD']
     DB_HOST = os.environ['DB_HOST']
     DB_PORT = os.environ['DB_PORT']
+
+    # AWS settings
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
 else:
     DEBUG = True
 
@@ -53,13 +58,9 @@ else:
     DB_PORT = config[DB]['DB_PORT']
 
     # AWS settings
-        # aws settings
     AWS_ACCESS_KEY_ID = config['AWS']['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = config['AWS']['AWS_SECRET_ACCESS_KEY']
     AWS_STORAGE_BUCKET_NAME = config['AWS']['AWS_STORAGE_BUCKET_NAME']
-    AWS_DEFAULT_ACL = None
-    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 
 # Set who can connect to DB
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'rezeptothek.herokuapp.com']
@@ -165,6 +166,12 @@ LOGOUT_REDIRECT_URL = '/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+# AWS settings
+AWS_DEFAULT_ACL = None
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com'
 
 # Django Storages settings for S3
 STATICFILES_STORAGE = 'app.storage_backends.StaticStorage'
@@ -181,10 +188,3 @@ STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
 MEDIA_LOCATION = 'media'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# AWS settings
-AWS_DEFAULT_ACL = None
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
-AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com'
