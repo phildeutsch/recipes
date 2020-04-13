@@ -17,11 +17,12 @@
                 <label for="id_type">Type</label>
                 <input type="text" class="form-control" id="id_type" name="type">
             </div>
-            <br>
-            <p><label for="id_picture">Bild:</label> <input type="file" name="picture" accept="image/*" id="id_picture"></p>
-            <br>
+            <div class="form-group">
+                <input class="btn btn-secondary" type="button" id="loadFileXml" value="Bild hinzufügen" onclick="document.getElementById('picture').click();" />
+                <input type="file" style="display:none;" id="picture" name="picture"/>
+            </div>
             <button type="submit" value="Submit" class="btn btn-primary">OK</button>
-            <a class="btn btn-secondary" href="/">Back</a>
+            <a class="btn btn-primary" href="/">Zurück</a>
             </form>
         </div>
     </div>

@@ -177,12 +177,10 @@ AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com'
 STATICFILES_STORAGE = 'app.storage_backends.StaticStorage'
 DEFAULT_FILE_STORAGE = 'app.storage_backends.PublicMediaStorage'
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-# s3 static settings
+# static settings
 STATIC_LOCATION = 'static'
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Media settings
 MEDIA_LOCATION = 'media'
