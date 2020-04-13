@@ -178,7 +178,8 @@ STATIC_LOCATION = 'static'
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
 
 # Media settings
-MEDIA_URL = '/media/'
+MEDIA_LOCATION = 'media'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # AWS settings
