@@ -25,9 +25,11 @@ SECRET_KEY = '+cj-_c)q^6#&a)$ezl+6jo0uxz_htsqp88l-7=_$zm(h*jd268'
 
 # Flags for dev / production
 if 'ON_HEROKU' in os.environ:
+    ON_HEROKU = True
     PROD = True
     DEBUG = False
 else:
+    ON_HEROKU = False
     PROD = False
     DEBUG = True
 
@@ -169,16 +171,20 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com'
 
-# Django Storages settings for S3
-STATICFILES_STORAGE = 'app.storage_backends.StaticStorage'
-DEFAULT_FILE_STORAGE = 'app.storage_backends.PublicMediaStorage'
+if PROD:
+    # Django Storages settings for S3
+    STATICFILES_STORAGE = 'app.storage_backends.StaticStorage'
+    DEFAULT_FILE_STORAGE = 'app.storage_backends.PublicMediaStorage'
 
-# static settings
-STATIC_LOCATION = 'static'
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    # static settings
+    STATIC_LOCATION = 'static'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# Media settings
-MEDIA_LOCATION = 'media'
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    # Media settings
+    MEDIA_LOCATION = 'media'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+else:
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
