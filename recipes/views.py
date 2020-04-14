@@ -13,19 +13,23 @@ def index(request):
 
 @login_required
 def add_dish(request):
-    form = DishForm(request.POST or None)
     if request.method == "POST":
+        form = DishForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.user = request.user
             post.save()
             return redirect('/')
+    else:
+        form = DishForm()
 
     return render(request, 'recipes/add_dish.html', {'form': form})
 
 @login_required
 def delete_dish(request, dish_id):
     dish = get_object_or_404(Dish, pk=dish_id)
+    if dish.picture:
+        dish.picture.delete()
     if dish.user==request.user:
         dish.delete()
     return redirect('/')
@@ -34,7 +38,7 @@ def delete_dish(request, dish_id):
 def edit_dish(request, dish_id):
     dish = get_object_or_404(Dish, pk=dish_id)
     if request.method == "POST":
-        form = DishForm(request.POST, instance=dish)
+        form = DishForm(request.POST, request.FILES, instance=dish)
         if form.is_valid():
             post = form.save()
             return redirect('/')

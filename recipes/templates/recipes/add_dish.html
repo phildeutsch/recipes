@@ -7,9 +7,8 @@
             <h3 class="card-title">Add dish</h3>
         </div>
         <div class="card-body">
-            <form method="POST" class="post-form">
+            <form method="POST" class="post-form" enctype="multipart/form-data"> 
             {% csrf_token %}
-
             <div class="form-group">
                 <label for="id_name">Name</label>
                 <input type="text" class="form-control" id="id_name" name="name">
@@ -18,9 +17,12 @@
                 <label for="id_type">Type</label>
                 <input type="text" class="form-control" id="id_type" name="type">
             </div>
-            
-            <button type="submit" class="btn btn-primary">OK</button>
-            <a class="btn btn-secondary" href="/">Back</a>
+            <div class="form-group">
+                <input class="btn btn-secondary" type="button" id="loadFileXml" value="Bild hinzufügen" onclick="document.getElementById('picture').click();" />
+                <input type="file" style="display:none;" id="picture" name="picture"/>
+            </div>
+            <button type="submit" value="Submit" class="btn btn-primary">OK</button>
+            <a class="btn btn-primary" href="/">Zurück</a>
             </form>
         </div>
     </div>
