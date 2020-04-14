@@ -1,4 +1,5 @@
 config.ini
 .vscode
 *.pyc
-db?backups-
+db_backups/
+mediafiles/
