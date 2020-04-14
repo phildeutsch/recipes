@@ -23,48 +23,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '+cj-_c)q^6#&a)$ezl+6jo0uxz_htsqp88l-7=_$zm(h*jd268'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# Flags for dev / production
 if 'ON_HEROKU' in os.environ:
-    ON_HEROKU = True
-else:
-    ON_HEROKU = False
-
-if ON_HEROKU:
+    PROD = True
     DEBUG = False
-
-    # DB settings
-    DB_NAME = os.environ['DB_NAME']
-    DB_USERNAME = os.environ['DB_USERNAME']
-    DB_PASSWORD = os.environ['DB_PASSWORD']
-    DB_HOST = os.environ['DB_HOST']
-    DB_PORT = os.environ['DB_PORT']
-
-    # AWS settings
-    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
 else:
+    PROD = False
     DEBUG = True
 
-    # DB settings
-    DB = 'DATABASE_LOCAL'
-    # DB = 'DATABASE_PROD'
-    config = configparser.ConfigParser()
-    config.read('app/config.ini')
-    DB_NAME = config[DB]['DB_NAME']
-    DB_USERNAME = config[DB]['DB_USERNAME']
-    DB_PASSWORD = config[DB]['DB_PASSWORD']
-    DB_HOST = config[DB]['DB_HOST']
-    DB_PORT = config[DB]['DB_PORT']
-
-    # AWS settings
-    AWS_ACCESS_KEY_ID = config['AWS']['AWS_ACCESS_KEY_ID']
-    AWS_SECRET_ACCESS_KEY = config['AWS']['AWS_SECRET_ACCESS_KEY']
-    AWS_STORAGE_BUCKET_NAME = config['AWS']['AWS_STORAGE_BUCKET_NAME']
+# Override PROD flag
+# PROD = True
 
 # Set who can connect to DB
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'rezeptothek.herokuapp.com']
-
 
 # Application definition
 INSTALLED_APPS = [
@@ -111,9 +82,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
+if ON_HEROKU:
+    DB_NAME = os.environ['DB_NAME']
+    DB_USERNAME = os.environ['DB_USERNAME']
+    DB_PASSWORD = os.environ['DB_PASSWORD']
+    DB_HOST = os.environ['DB_HOST']
+    DB_PORT = os.environ['DB_PORT']
+else:
+    DB = 'DATABASE_LOCAL'
+    # DB = 'DATABASE_PROD'
+    config = configparser.ConfigParser()
+    config.read('app/config.ini')
+    DB_NAME = config[DB]['DB_NAME']
+    DB_USERNAME = config[DB]['DB_USERNAME']
+    DB_PASSWORD = config[DB]['DB_PASSWORD']
+    DB_HOST = config[DB]['DB_HOST']
+    DB_PORT = config[DB]['DB_PORT']
 
 DATABASES = {
     'default': {
@@ -167,6 +154,15 @@ LOGOUT_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 # AWS settings
+if ON_HEROKU:
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+else:
+    AWS_ACCESS_KEY_ID = config['AWS']['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = config['AWS']['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = config['AWS']['AWS_STORAGE_BUCKET_NAME']
+
 AWS_DEFAULT_ACL = None
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
