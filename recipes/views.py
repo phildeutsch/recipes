@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 from .models import Dish, Recipe
-from .forms import DishForm
+from .forms import DishForm, RecipeForm
 
 @login_required
 def index(request):
@@ -62,3 +62,25 @@ def recipes(request, dish_id):
         'recipes': recipes}
 
     return render(request, 'recipes/index.html', context)
+
+@login_required
+def add_recipe(request, dish_id):
+    dish = get_object_or_404(Dish, pk=dish_id)
+    if request.method == "POST":
+        form = RecipeForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.dish = dish
+            post.save()
+            return redirect('/recipes/'+str(dish_id))
+    else:
+        form = RecipeForm()
+
+    return render(request, 'recipes/add_recipe.html', {'form': form})
+
+@login_required
+def delete_recipe(request, recipe_id):
+    recipe = get_object_or_404(Recipe, pk=recipe_id)
+    if recipe.dish.user==request.user:
+        recipe.delete()
+    return redirect('/recipes/'+str(recipe.dish.id))
