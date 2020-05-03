@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
-from .models import Dish
+from .models import Dish, Recipe
 from .forms import DishForm
 
 @login_required
@@ -52,10 +52,13 @@ def edit_dish(request, dish_id):
 # Recipe views
 @login_required
 def recipes(request, dish_id):
+    dish = get_object_or_404(Dish, pk=dish_id)
     dishes = Dish.objects.filter(user=request.user)
+    recipes = Recipe.objects.filter(dish=dish)
 
     context = {
         'dishes': dishes,
-        'dish_id': dish_id}
+        'dish_id': dish_id,
+        'recipes': recipes}
 
     return render(request, 'recipes/index.html', context)
