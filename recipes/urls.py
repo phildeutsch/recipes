@@ -7,5 +7,9 @@ urlpatterns = [
     # Dish URLs
     path('add_dish', views.add_dish, name='add_dish'),
     path('edit_dish/<int:dish_id>', views.edit_dish, name='edit_dish'),
-    path('delete_dish/<int:dish_id>', views.delete_dish, name='delete_dish')
+    path('delete_dish/<int:dish_id>', views.delete_dish, name='delete_dish'),
+
+    # Recipe URLs
+    path('recipes/<int:dish_id>', views.recipes, name='recipes')
+
 ]
