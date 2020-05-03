@@ -15,3 +15,13 @@ class Dish(models.Model):
 
     def __str__(self):
         return self.name
+
+class Recipe(models.Model):
+    dish = models.ForeignKey(Dish, on_delete=models.CASCADE)
+
+    created = models.DateField(auto_now_add=True)
+    last_modified = models.DateField(auto_now=True)
+    text = models.TextField()
+
+    def __str__(self):
+        return self.dish.name + ': ' + str(self.id)
