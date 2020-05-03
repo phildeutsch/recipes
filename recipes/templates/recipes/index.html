@@ -40,6 +40,7 @@
             </div>
         </div>
     </div>
+    {% if recipes is not None %}
     <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
@@ -47,7 +48,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Zulezt geändert</th>
+                                <th>Zuletzt geändert</th>
                                 <th>Zuletzt gekocht</th>
                                 <th></th>
                             </tr>
@@ -66,7 +67,11 @@
                     Keine Rezepte gefunden
                 {% endif %}
             </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" href="/add_recipe">Neues Rezept</a>
+            </div>
         </div>
     </div>
+    {% endif %}
 </div>
 {% endblock %}
