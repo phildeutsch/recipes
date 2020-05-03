@@ -3,11 +3,6 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="card">
-            <div class="card-header">
-                <div class="col-4">
-                    <h4 class="card-title">Gerichte</h4>
-                </div>
-            </div>
             <div class="card-body">
                 <div class="table-responsive" style="overflow: hidden">
                     <table id="dashboard-table" class="table" style="width:100%">
@@ -26,7 +21,7 @@
                             {% else %}
                             <tr></tr>
                             {% endif %}
-                                <td><a class="badge badge-primary" href="/edit_dish/{{dish.id}}">{{dish.name}}</a></td>
+                                <td>{{dish.name}}</td>
                                 <td>{{dish.type}}</td>
                                 <td><a href="/edit_dish/{{dish.id}}"><i class="fas fa-edit"></i></a></td>
                                 <td><a href="/recipes/{{dish.id}}"><i class="far fa-file-alt"></i></a></td>
