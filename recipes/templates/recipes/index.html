@@ -3,14 +3,9 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="card">
-            <div class="card-header">
-                <div class="col-4">
-                    <h4 class="card-title">Gerichte</h4>
-                </div>
-            </div>
             <div class="card-body">
                 <div class="table-responsive" style="overflow: hidden">
-                    <table id="dashboard-table" class="table table-striped" style="width:100%">
+                    <table id="dashboard-table" class="table" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -21,15 +16,19 @@
                         </thead>
                         <tbody>
                             {% for dish in dishes %}
-                            <tr>
-                                <td><a class="badge badge-info" href="/edit_dish/{{dish.id}}">{{dish.name}}</a></td>
+                            {% if dish.id == dish_id %}
+                            <tr class="table-primary">
+                            {% else %}
+                            <tr></tr>
+                            {% endif %}
+                                <td>{{dish.name}}</td>
                                 <td>{{dish.type}}</td>
-                                {% if not dish.picture %}
-                                    <td></td>
+                                <td><a href="/edit_dish/{{dish.id}}"><i class="fas fa-edit"></i></a></td>
+                                {% if dish.id == dish_id %}
+                                    <td><a href="/recipes/{{dish.id}}"><i class="fas fa-book-open"></i></a></td>
                                 {% else %}
-                                    <td align="center"><img src="{{ dish.picture.url }}" height="50"></td>
+                                    <td><a href="/recipes/{{dish.id}}"><i class="fas fa-book"></i></a></td>
                                 {% endif %}
-                                <td><a class="badge badge-warning" href="/delete_dish/{{dish.id}}">Löschen</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -41,5 +40,38 @@
             </div>
         </div>
     </div>
+    {% if recipes is not None %}
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                {% if recipes.all %}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Zuletzt geändert</th>
+                                <th>Zuletzt gekocht</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for r in recipes %}
+                            <tr>
+                                <td> {{ r.last_modified }} </td>
+                                <td> NA </td>
+                                <td><a href="/recipe/{{recipe.id}}"><i class="far fa-file-alt"></i></a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    Keine Rezepte gefunden
+                {% endif %}
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" href="/add_recipe">Neues Rezept</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
