@@ -59,6 +59,7 @@
                                 <td> {{ r.last_modified }} </td>
                                 <td> NA </td>
                                 <td><a href="/recipe/{{recipe.id}}"><i class="far fa-file-alt"></i></a></td>
+                                <td><a class="text-warning" href="/delete_recipe/{{r.id}}"><i class="far fa-trash-alt"></i></a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -68,7 +69,7 @@
                 {% endif %}
             </div>
             <div class="card-footer">
-                <a class="btn btn-primary" href="/add_recipe">Neues Rezept</a>
+                <a class="btn btn-primary" href="/add_recipe/{{dish_id}}">Neues Rezept</a>
             </div>
         </div>
     </div>
