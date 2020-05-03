@@ -1,11 +1,7 @@
-a.btn.btn-primary {
-  color: white;
+body {
+  padding-top: 5rem;
 }
-
-a.btn.btn-secondary {
-  color: #ffffff;
-}
-
-a.badge.badge-info {
-  color: #ffffff;
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
 }

@@ -2,132 +2,54 @@
 {% load static %}
 
 {% block base %}
-      <div class="wrapper">
-        <div class="navbar-minimize-fixed">
-          <button class="minimize-sidebar btn btn-link btn-just-icon">
-            <i class="tim-icons icon-align-center visible-on-sidebar-regular text-muted"></i>
-            <i class="tim-icons icon-bullet-list-67 visible-on-sidebar-mini text-muted"></i>
-          </button>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link active" href="/">Rezepte</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Profil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Aktivitäten</a>
+      </li>
+      <!--
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
         </div>
-        <div class="sidebar">
-          <!--
-            Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-        -->
-          <div class="sidebar-wrapper">
-            <ul class="nav" >
-              <li {% if request.path == '/index' or request.path == '/'%} class="active" {% endif %}>
-                <a href="/">
-                  <i class="fas fa-utensils"></i>
-                  <p>Gerichte</p>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="main-panel">
-          <!-- Navbar -->
-          <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
-            <div class="container-fluid">
-              <div class="navbar-wrapper">
-                <div class="navbar-minimize d-inline">
-                  <button class="minimize-sidebar btn btn-link btn-just-icon">
-                    <i class="tim-icons icon-align-center visible-on-sidebar-regular"></i>
-                    <i class="tim-icons icon-bullet-list-67 visible-on-sidebar-mini"></i>
-                  </button>
-                </div>
-                <div class="navbar-toggle d-inline">
-                  <button type="button" class="navbar-toggler">
-                    <span class="navbar-toggler-bar bar1"></span>
-                    <span class="navbar-toggler-bar bar2"></span>
-                    <span class="navbar-toggler-bar bar3"></span>
-                  </button>
-                </div>
-                <a class="navbar-brand" href="javascript:void(0)">Rezeptothek</a>
-              </div>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-bar navbar-kebab"></span>
-                <span class="navbar-toggler-bar navbar-kebab"></span>
-                <span class="navbar-toggler-bar navbar-kebab"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navigation">
-                <ul class="navbar-nav ml-auto">
-                  <li class="dropdown nav-item">
-                    <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
-              <!--
-              <div class="notification d-none d-lg-block d-xl-block"></div>
-              -->
-                      <i class="far fa-user"></i>
-                      <p class="d-lg-none">
-                        User
-                      </p>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                        <li>
-                            <p class="dropdown-item" style="pointer-events:none">{{request.user}}</p>
-                          </li>
-                          <li class="nav-link">
-                              <a href="/accounts/logout" class="nav-item dropdown-item">Log out</a>
-                            </li>
-                              </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-          <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i class="tim-icons icon-simple-remove"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End Navbar -->
-          <div class="content">
-              {% block content %}
-              {% endblock %}
+      </li>
+      -->
+    </ul>
+    <!-- <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Suche" aria-label="Suche">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Suche</button>
+    </form> -->
+  </div>
+</nav>
+
+<main role="main" class="container-fluid">
+
+  {% block content %}
+  {% endblock %}
           
-            <footer class="footer">
-              <div class="container-fluid">
-                <ul class="nav">
-                    <li class="nav-item"><a class="nav-link" href="/tandc">Terms & Conditions</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/privacy">Privacy Policy</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/cookies">Cookie Policy</a></li>
-                  </ul>
-                <div class="copyright">
-                  ©
-                  <script>
-                    document.write(new Date().getFullYear())
-                  </script> by
-                  <a href="javascript:void(0)" target="_blank">Rezeptothek</a>
-                </div>
-              </div>
-            </footer>
-          </div>
-        </div>
-      </div>
+</main><!-- /.container -->
 
-      <!--   Reload JS   -->
-    <script src="{% static 'js/perfect-scrollbar.jquery.min.js' %}"></script>
-    <script src="{% static 'js/moment.min.js' %}"></script>
-
-    <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-    <script src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>
-
-    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
-    <script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
-    
-    <!-- Core JS -->
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-
-    <!-- Chart JS -->
-    <script src="{% static 'js/chartjs.min.js' %}"></script>
-
-    <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{% static 'js/black-dashboard.min.js' %}"></script>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>
 {% endblock %}
