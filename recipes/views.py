@@ -11,6 +11,7 @@ def index(request):
     context = {'dishes': dishes}
     return render(request, 'recipes/index.html', context)
 
+# Dish views
 @login_required
 def add_dish(request):
     if request.method == "POST":
@@ -47,3 +48,14 @@ def edit_dish(request, dish_id):
     
     context = {'form': form, 'dish': dish}
     return render(request, 'recipes/edit_dish.html', context)
+
+# Recipe views
+@login_required
+def recipes(request, dish_id):
+    dishes = Dish.objects.filter(user=request.user)
+
+    context = {
+        'dishes': dishes,
+        'dish_id': dish_id}
+
+    return render(request, 'recipes/index.html', context)
