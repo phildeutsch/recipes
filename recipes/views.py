@@ -81,6 +81,14 @@ def add_recipe(request, dish_id):
     return render(request, 'recipes/add_recipe.html', {'form': form, 'dish': dish})
 
 @login_required
+def pin_recipe(request, recipe_id):
+    recipe = get_object_or_404(Recipe, pk=recipe_id)
+    if recipe.dish.user==request.user:
+        recipe.pinned = 1 - recipe.pinned
+        recipe.save()
+    return redirect('/recipes/'+str(recipe.dish.id))
+
+@login_required
 def delete_recipe(request, recipe_id):
     recipe = get_object_or_404(Recipe, pk=recipe_id)
     if recipe.dish.user==request.user:

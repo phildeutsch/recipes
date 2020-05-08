@@ -52,7 +52,6 @@
                                 <th>Erstellt</th>
                                 <th>ID</th>
                                 <th>Parent</th>
-                                <th>Pinned</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -63,8 +62,11 @@
                                 <td> {{ r.created }} </td>
                                 <td> {{ r.id }} </td>
                                 <td> {{ r.parent_recipe }} </td>
-                                <td> {{ r.pinned }} </td>
-                                <td><a href="/pin_recipe/{{r.id}}" title="Rezept pin"><i class="fas fa-thumbtack"></i></a></td>
+                                {% if r.pinned %}
+                                    <td><a href="/pin_recipe/{{r.id}}" title="Rezept pin"><i class="fas fa-thumbtack text-success"></i></a></td>
+                                {% else %}
+                                    <td><a href="/pin_recipe/{{r.id}}" title="Rezept pin"><i class="fas fa-thumbtack"></i></a></td>
+                                {% endif %}
                                 <td><a href="/recipe/{{r.id}}" title="Lesen"><i class="far fa-file-alt"></i></a></td>
                             </tr>
                             {% endfor %}
