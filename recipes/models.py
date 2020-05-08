@@ -20,7 +20,9 @@ class Recipe(models.Model):
     dish = models.ForeignKey(Dish, on_delete=models.CASCADE)
 
     created = models.DateField(auto_now_add=True)
-    last_modified = models.DateField(auto_now=True)
+
+    servings = models.IntegerField()
+    ingredients = models.TextField()
     text = models.TextField()
 
     def __str__(self):
