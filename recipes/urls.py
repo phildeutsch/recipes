@@ -12,6 +12,8 @@ urlpatterns = [
     # Recipe URLs
     path('recipes/<int:dish_id>', views.recipes, name='recipes'),
     path('add_recipe/<int:dish_id>', views.add_recipe, name='add_recipe'),
-    path('delete_recipe/<int:recipe_id>', views.delete_recipe, name='delete_recipe')
+    path('delete_recipe/<int:recipe_id>', views.delete_recipe, name='delete_recipe'),
+    path('pin_recipe/<int:recipe_id>', views.pin_recipe, name='pin_recipe'),
+    path('recipe/<int:recipe_id>', views.recipe, name='recipe')
 
 ]
