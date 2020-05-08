@@ -23,11 +23,11 @@
                             {% endif %}
                                 <td>{{dish.name}}</td>
                                 <td>{{dish.type}}</td>
-                                <td><a href="/edit_dish/{{dish.id}}"><i class="fas fa-edit"></i></a></td>
+                                <td><a href="/edit_dish/{{dish.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
                                 {% if dish.id == dish_id %}
-                                    <td><a href="/recipes/{{dish.id}}"><i class="fas fa-book-open"></i></a></td>
+                                    <td><a href="/recipes/{{dish.id}}" title="Rezepte"><i class="fas fa-book-open"></i></a></td>
                                 {% else %}
-                                    <td><a href="/recipes/{{dish.id}}"><i class="fas fa-book"></i></a></td>
+                                    <td><a href="/recipes/{{dish.id}}" title="Rezepte"><i class="fas fa-book"></i></a></td>
                                 {% endif %}
                             </tr>
                             {% endfor %}
@@ -58,8 +58,8 @@
                             <tr>
                                 <td> {{ r.last_modified }} </td>
                                 <td> NA </td>
-                                <td><a href="/recipe/{{recipe.id}}"><i class="far fa-file-alt"></i></a></td>
-                                <td><a class="text-warning" href="/delete_recipe/{{r.id}}"><i class="far fa-trash-alt"></i></a></td>
+                                <td><a href="/recipe/{{r.id}}" title="Lesen"><i class="far fa-file-alt"></i></a></td>
+                                <td><a class="text-warning" href="/delete_recipe/{{r.id}}" title="Löschen"><i class="far fa-trash-alt"></i></a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
