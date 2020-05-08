@@ -10,6 +10,10 @@
             <form method="POST" class="post-form">
                 {% csrf_token %}
                 <div class="form-group">
+                    <label for="id_name">Rezept Titel</label>
+                    <input type="text" class="form-control" id="id_name" name="name" value="{{dish.name}}"></input>                
+                </div>
+                <div class="form-group">
                     <label for="id_servings">Portionen</label>
                     <input type="number" class="form-control" id="id_servings" name="servings"></input>                
                 </div>
