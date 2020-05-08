@@ -84,3 +84,9 @@ def delete_recipe(request, recipe_id):
     if recipe.dish.user==request.user:
         recipe.delete()
     return redirect('/recipes/'+str(recipe.dish.id))
+
+@login_required
+def recipe(request, recipe_id):
+    recipe = get_object_or_404(Recipe, pk=recipe_id)
+    context ={'recipe': recipe}
+    return render(request, 'recipes/recipe.html', context)
