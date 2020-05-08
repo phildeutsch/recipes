@@ -13,4 +13,4 @@ class DishForm(ModelForm):
 class RecipeForm(ModelForm):
     class Meta:
         model = Recipe
-        fields = ['text']
+        fields = ['servings', 'ingredients', 'text']

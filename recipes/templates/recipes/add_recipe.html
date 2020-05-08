@@ -9,10 +9,22 @@
         <div class="card-body">
             <form method="POST" class="post-form">
                 {% csrf_token %}
-                {{ form.as_p }}
+                <div class="form-group">
+                    <label for="id_servings">Portionen</label>
+                    <input type="number" class="form-control" id="id_servings" name="servings"></input>                
+                </div>
+                <div class="form-group">
+                    <label for="id_ingredients">Zutaten</label>
+                    <textarea class="form-control" id="id_ingredients" name="ingredients" rows="3"></textarea>                
+                </div>
+                <div class="form-group">
+                    <label for="id_text">Anleitung</label>
+                    <textarea class="form-control" id="id_text" name="text" rows="3"></textarea>                
+                </div>
         </div>
         <div class="card-footer">
             <button type="submit" value="Submit" class="btn btn-primary">OK</button>
+            <a class="btn btn-primary" href="/">Zurück</a>
         </form>
         </div>
     </div>
