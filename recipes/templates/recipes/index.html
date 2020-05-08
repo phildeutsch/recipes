@@ -48,18 +48,24 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Zuletzt geändert</th>
-                                <th>Zuletzt gekocht</th>
+                                <th>Name</th>
+                                <th>Erstellt</th>
+                                <th>ID</th>
+                                <th>Parent</th>
+                                <th>Pinned</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for r in recipes %}
                             <tr>
+                                <td> {{ r.name }} </td>
                                 <td> {{ r.created }} </td>
-                                <td> NA </td>
+                                <td> {{ r.id }} </td>
+                                <td> {{ r.parent_recipe }} </td>
+                                <td> {{ r.pinned }} </td>
+                                <td><a href="/pin_recipe/{{r.id}}" title="Rezept pin"><i class="fas fa-thumbtack"></i></a></td>
                                 <td><a href="/recipe/{{r.id}}" title="Lesen"><i class="far fa-file-alt"></i></a></td>
-                                <!-- <td><a class="text-warning" href="/delete_recipe/{{r.id}}" title="Löschen"><i class="far fa-trash-alt"></i></a></td> -->
                             </tr>
                             {% endfor %}
                         </tbody>

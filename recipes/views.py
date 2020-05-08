@@ -71,12 +71,14 @@ def add_recipe(request, dish_id):
         if form.is_valid():
             post = form.save(commit=False)
             post.dish = dish
+            post.parent_recipe = None
+            post.pinned = False
             post.save()
             return redirect('/recipes/'+str(dish_id))
     else:
         form = RecipeForm()
 
-    return render(request, 'recipes/add_recipe.html', {'form': form})
+    return render(request, 'recipes/add_recipe.html', {'form': form, 'dish': dish})
 
 @login_required
 def delete_recipe(request, recipe_id):

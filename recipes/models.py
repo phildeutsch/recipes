@@ -18,12 +18,16 @@ class Dish(models.Model):
 
 class Recipe(models.Model):
     dish = models.ForeignKey(Dish, on_delete=models.CASCADE)
+    parent_recipe = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, default=None)
 
     created = models.DateField(auto_now_add=True)
 
+    name = models.CharField(max_length=256)
     servings = models.IntegerField()
     ingredients = models.TextField()
     text = models.TextField()
+
+    pinned = models.BooleanField(default=False)
 
     def __str__(self):
         return self.dish.name + ': ' + str(self.id)
