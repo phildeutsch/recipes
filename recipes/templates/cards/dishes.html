@@ -1,0 +1,37 @@
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive" style="overflow: hidden">
+            <table id="dashboard-table" class="table" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Typ</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dish in dishes %}
+                    {% if dish.id == dish_id %}
+                    <tr class="table-primary">
+                    {% else %}
+                    <tr></tr>
+                    {% endif %}
+                        <td>{{dish.name}}</td>
+                        <td>{{dish.type}}</td>
+                        <td><a href="/edit_dish/{{dish.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
+                        {% if dish.id == dish_id %}
+                            <td><a href="/recipes/{{dish.id}}" title="Rezepte"><i class="fas fa-book-open"></i></a></td>
+                        {% else %}
+                            <td><a href="/recipes/{{dish.id}}" title="Rezepte"><i class="fas fa-book"></i></a></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-primary" href="/add_dish">Gericht hinzufügen</a>
+    </div>
+</div>
