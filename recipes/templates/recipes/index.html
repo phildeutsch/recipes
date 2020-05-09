@@ -2,85 +2,23 @@
 {% block content %}
 <div class="row">
     <div class="col-lg-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="table-responsive" style="overflow: hidden">
-                    <table id="dashboard-table" class="table" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Typ</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for dish in dishes %}
-                            {% if dish.id == dish_id %}
-                            <tr class="table-primary">
-                            {% else %}
-                            <tr></tr>
-                            {% endif %}
-                                <td>{{dish.name}}</td>
-                                <td>{{dish.type}}</td>
-                                <td><a href="/edit_dish/{{dish.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
-                                {% if dish.id == dish_id %}
-                                    <td><a href="/recipes/{{dish.id}}" title="Rezepte"><i class="fas fa-book-open"></i></a></td>
-                                {% else %}
-                                    <td><a href="/recipes/{{dish.id}}" title="Rezepte"><i class="fas fa-book"></i></a></td>
-                                {% endif %}
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="card-footer">
-                <a class="btn btn-primary" href="/add_dish">Gericht hinzufügen</a>
-            </div>
-        </div>
+        {% include "cards/dishes.html" %}
     </div>
     {% if recipes is not None %}
     <div class="col-lg-6">
-        <div class="card">
-            <div class="card-body">
-                {% if recipes.all %}
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Erstellt</th>
-                                <th>ID</th>
-                                <th>Parent</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for r in recipes %}
-                            <tr>
-                                <td> {{ r.name }} </td>
-                                <td> {{ r.created }} </td>
-                                <td> {{ r.id }} </td>
-                                <td> {{ r.parent_recipe }} </td>
-                                {% if r.pinned %}
-                                    <td><a href="/pin_recipe/{{r.id}}" title="Rezept pin"><i class="fas fa-thumbtack text-success"></i></a></td>
-                                {% else %}
-                                    <td><a href="/pin_recipe/{{r.id}}" title="Rezept pin"><i class="fas fa-thumbtack"></i></a></td>
-                                {% endif %}
-                                <td><a href="/recipe/{{r.id}}" title="Lesen"><i class="far fa-file-alt"></i></a></td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                {% else %}
+        {% if recipes.all %}
+            {% include "cards/recipes.html" %}
+        {% else %}
+            <div class="card">
+                <div class="card-body">
                     Keine Rezepte gefunden
-                {% endif %}
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary" href="/add_recipe/{{dish_id}}">Neues Rezept</a>
+                </div>
             </div>
-            <div class="card-footer">
-                <a class="btn btn-primary" href="/add_recipe/{{dish_id}}">Neues Rezept</a>
-            </div>
-        </div>
-    </div>
+        {% endif %}
+</div>
     {% endif %}
 </div>
 {% endblock %}

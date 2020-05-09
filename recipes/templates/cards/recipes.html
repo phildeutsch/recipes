@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Erstellt</th>
+                    <th>ID</th>
+                    <th>Parent</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in recipes %}
+                <tr>
+                    <td> {{ r.name }} </td>
+                    <td> {{ r.created }} </td>
+                    <td> {{ r.id }} </td>
+                    <td> {{ r.parent_recipe }} </td>
+                    {% if r.pinned %}
+                        <td><a href="/pin_recipe/{{r.id}}" title="Rezept pin"><i class="fas fa-thumbtack text-success"></i></a></td>
+                    {% else %}
+                        <td><a href="/pin_recipe/{{r.id}}" title="Rezept pin"><i class="fas fa-thumbtack"></i></a></td>
+                    {% endif %}
+                    <td><a href="/recipe/{{r.id}}" title="Lesen"><i class="far fa-file-alt"></i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-primary" href="/add_recipe/{{dish_id}}">Neues Rezept</a>
+    </div>
+</div>
