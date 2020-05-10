@@ -10,19 +10,23 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link active" href="/">Rezepte</a>
+        {% if 'recipes' in request.path or request.path == '/' %}
+          <a class="nav-link active" href="/">Rezepte</a>
+        {% else %}
+          <a class="nav-link" href="/">Rezepte</a>
+        {% endif %}
+      </li>
+      <li class="nav-item">
+        {% if 'users' in request.path %}
+          <a class="nav-link active" href="/users">Benutzer</a>
+        {% else %}
+          <a class="nav-link" href="/users">Benutzer</a>
+        {% endif %}
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Aktivitäten</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Benutzer</a>
-      </li>
     </ul>
-    <!-- <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Suche" aria-label="Suche">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Suche</button>
-    </form> -->
     <ul class="nav navbar-nav navbar-right">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i></a>
