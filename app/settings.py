@@ -39,6 +39,9 @@ else:
 # Set who can connect to DB
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'rezeptothek.herokuapp.com']
 
+# Allowed IPs for debug toolbar
+INTERNAL_IPS = ['127.0.0.1']
+
 # Application definition
 INSTALLED_APPS = [
     'app',
@@ -50,10 +53,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'storages',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
