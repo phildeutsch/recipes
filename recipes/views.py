@@ -16,7 +16,7 @@ def index(request):
 def users(request):
     users = User.objects.all()
     context = {'users': users} 
-    return render(request, 'recipes/users.html', context)
+    return render(request, 'users/users.html', context)
 
 # Dish views
 @login_required
