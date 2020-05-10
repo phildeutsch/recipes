@@ -19,11 +19,11 @@
                     {% endif %}
                         <td>{{dish.name}}</td>
                         <td>{{dish.type}}</td>
-                        <td><a href="/edit_dish/{{dish.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
+                        <td><a href="/recipes/edit_dish/{{dish.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
                         {% if dish.id == dish_id %}
-                            <td><a href="/recipes/{{dish.id}}" title="Rezepte"><i class="fas fa-book-open"></i></a></td>
+                            <td><a href="/recipes/dish/{{dish.id}}" title="Rezepte"><i class="fas fa-book-open"></i></a></td>
                         {% else %}
-                            <td><a href="/recipes/{{dish.id}}" title="Rezepte"><i class="fas fa-book"></i></a></td>
+                            <td><a href="/recipes/dish/{{dish.id}}" title="Rezepte"><i class="fas fa-book"></i></a></td>
                         {% endif %}
                     </tr>
                     {% endfor %}
@@ -32,6 +32,6 @@
         </div>
     </div>
     <div class="card-footer">
-        <a class="btn btn-primary" href="/add_dish">Gericht hinzufügen</a>
+        <a class="btn btn-primary" href="recipes/add_dish">Gericht hinzufügen</a>
     </div>
 </div>

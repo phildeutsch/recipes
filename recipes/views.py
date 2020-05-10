@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from .models import Dish, Recipe
 from .forms import DishForm, RecipeForm
@@ -10,6 +11,12 @@ def index(request):
 
     context = {'dishes': dishes}
     return render(request, 'recipes/index.html', context)
+
+@login_required
+def users(request):
+    users = User.objects.all()
+    context = {'users': users} 
+    return render(request, 'recipes/users.html', context)
 
 # Dish views
 @login_required
@@ -74,7 +81,7 @@ def add_recipe(request, dish_id):
             post.parent_recipe = None
             post.pinned = False
             post.save()
-            return redirect('/recipes/'+str(dish_id))
+            return redirect('/recipes/dish/'+str(dish_id))
     else:
         form = RecipeForm()
 
@@ -86,14 +93,14 @@ def pin_recipe(request, recipe_id):
     if recipe.dish.user==request.user:
         recipe.pinned = 1 - recipe.pinned
         recipe.save()
-    return redirect('/recipes/'+str(recipe.dish.id))
+    return redirect('/recipes/dish/'+str(recipe.dish.id))
 
 @login_required
 def delete_recipe(request, recipe_id):
     recipe = get_object_or_404(Recipe, pk=recipe_id)
     if recipe.dish.user==request.user:
         recipe.delete()
-    return redirect('/recipes/'+str(recipe.dish.id))
+    return redirect('/recipes/dish/'+str(recipe.dish.id))
 
 @login_required
 def modify_recipe(request, recipe_id):
@@ -106,7 +113,7 @@ def modify_recipe(request, recipe_id):
             post.parent_recipe = get_object_or_404(Recipe, pk=recipe_id)
             post.pinned = False
             post.save()
-            return redirect('/recipe/' + str(recipe.id))
+            return redirect('/recipes/recipe/' + str(recipe.id))
     else:
         form = DishForm(instance=recipe)
     
