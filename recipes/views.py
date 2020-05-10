@@ -98,19 +98,19 @@ def delete_recipe(request, recipe_id):
 @login_required
 def modify_recipe(request, recipe_id):
     recipe = get_object_or_404(Recipe, pk=recipe_id)
-    # recipe.id = None
-    form = RecipeForm(instance=recipe)
-    context ={'recipe': recipe, 'form': form}
-
+    recipe.id = None
     if request.method == "POST":
-        print(form)
+        form = RecipeForm(request.POST, instance=recipe)
         if form.is_valid():
             post = form.save(commit=False)
-            post.parent_recipe = None
+            post.parent_recipe = get_object_or_404(Recipe, pk=recipe_id)
             post.pinned = False
             post.save()
-            return redirect('/recipes/'+str(recipe.dish.id))
-
+            return redirect('/recipe/' + str(recipe.id))
+    else:
+        form = DishForm(instance=recipe)
+    
+    context = {'form': form, 'recipe': recipe}
     return render(request, 'recipes/modify_recipe.html', context)
 
 
