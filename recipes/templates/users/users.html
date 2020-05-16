@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-md-4 ml-auto mr-auto">
+    <div class="card">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Benutzer</th>
+                        <th>Updates</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in users %}
+                        {% if u != request.user %}
+                        <tr>
+                            <td>{{ u }}</td>
+                            <td> <i class="far fa-check-square"></i> </td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

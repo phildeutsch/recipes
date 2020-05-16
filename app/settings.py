@@ -9,19 +9,17 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
 import configparser
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+cj-_c)q^6#&a)$ezl+6jo0uxz_htsqp88l-7=_$zm(h*jd268'
+SECRET_KEY = 'n0mxu*%4t(@kf0^8%n$ctv=^qjd($hr(bg$c4m$v4to(z(7r)5'
 
 # Flags for dev / production
 if 'ON_HEROKU' in os.environ:
@@ -32,9 +30,6 @@ else:
     ON_HEROKU = False
     PROD = False
     DEBUG = True
-
-# Override PROD flag
-# PROD = True
 
 # Set who can connect to DB
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'rezeptothek.herokuapp.com']
@@ -89,6 +84,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
+
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -139,6 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
     # },
 ]
 
+AUTH_USER_MODEL = 'recipes.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -196,3 +193,4 @@ else:
 
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+
