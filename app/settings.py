@@ -40,6 +40,7 @@ INTERNAL_IPS = ['127.0.0.1']
 # Application definition
 INSTALLED_APPS = [
     'app',
+    'accounts',
     'recipes',
     'django_registration',
     'django.contrib.admin',
@@ -135,7 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
     # },
 ]
 
-AUTH_USER_MODEL = 'recipes.User'
+AUTH_USER_MODEL = 'accounts.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

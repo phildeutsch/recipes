@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
-from .models import User, Dish, Recipe
+from .models import Dish, Recipe
 from .forms import DishForm, RecipeForm
+
+from accounts.models import User, Profile
 
 @login_required
 def index(request):
