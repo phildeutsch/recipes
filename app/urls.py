@@ -20,11 +20,12 @@ from django.conf.urls.static import static
 
 from django_registration.backends.one_step.views import RegistrationView
 
-from recipes.forms import UserForm
+from accounts.forms import UserForm
 
 urlpatterns = [
-    path('', include('recipes.urls')),
     path('admin/', admin.site.urls),
+
+    path('', include('recipes.urls')),
 
     # Registration URLs
     path('accounts/register/',
