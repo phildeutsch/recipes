@@ -1,11 +1,5 @@
 from django.forms import ModelForm
-from .models import User, Dish, Recipe
-from django_registration.forms import RegistrationForm
-
-class UserForm(RegistrationForm):
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password1', 'password2']
+from .models import Dish, Recipe
 
 class DishForm(ModelForm):
     class Meta:
