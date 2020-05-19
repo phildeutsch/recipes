@@ -3,6 +3,8 @@ from django.utils import timezone
 from datetime import datetime
 from app.helpers import RandomFileName 
 
+from accounts.models import User
+
 class Dish(models.Model):
     class Meta:
         verbose_name_plural = "dishes"
@@ -15,6 +17,7 @@ class Dish(models.Model):
         return self.name
 
 class Recipe(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     dish = models.ForeignKey(Dish, on_delete=models.CASCADE)
     parent_recipe = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, default=None)
 
