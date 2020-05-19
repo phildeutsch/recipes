@@ -5,9 +5,9 @@
     <div class="card-body">
         <p>Portionen: {{ recipe.servings }} </p>
         <p>Zutaten:</p>
-        <p> {{ recipe.ingredients }} </p>
+        <p> {{ recipe.ingredients | linebreaks }} </p>
         <p>Anleitung:</p>
-        <p> {{ recipe.text }} </p>
+        <p> {{ recipe.text | linebreaks }} </p>
     </div>
     <div class="card-footer">
         <a class="btn btn-warning" href="/recipes/delete_recipe/{{recipe.id}}">Rezept entfernen</a>
