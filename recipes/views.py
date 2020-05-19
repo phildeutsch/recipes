@@ -100,7 +100,7 @@ def delete_recipe(request, recipe_id):
     return redirect('/recipes/dish/'+str(recipe.dish.id))
 
 @login_required
-def modify_recipe(request, recipe_id):
+def edit_recipe(request, recipe_id):
     recipe = get_object_or_404(Recipe, pk=recipe_id)
     recipe.id = None
     if request.method == "POST":
@@ -115,7 +115,7 @@ def modify_recipe(request, recipe_id):
         form = DishForm(instance=recipe)
     
     context = {'form': form, 'recipe': recipe}
-    return render(request, 'recipes/modify_recipe.html', context)
+    return render(request, 'recipes/edit_recipe.html', context)
 
 
 @login_required

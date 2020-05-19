@@ -16,7 +16,7 @@ urlpatterns = [
     path('recipes/add_recipe/<int:dish_id>', views.add_recipe, name='add_recipe'),
     path('recipes/delete_recipe/<int:recipe_id>', views.delete_recipe, name='delete_recipe'),
     path('recipes/pin_recipe/<int:recipe_id>', views.pin_recipe, name='pin_recipe'),
-    path('recipes/modify_recipe/<int:recipe_id>', views.modify_recipe, name='modify_recipe'),
+    path('recipes/edit_recipe/<int:recipe_id>', views.edit_recipe, name='edit_recipe'),
     path('recipes/recipe/<int:recipe_id>', views.recipe, name='recipe')
 
 ]
