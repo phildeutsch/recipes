@@ -3,20 +3,22 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>Koch</th>
                     <th>Name</th>
                     <th>Erstellt</th>
                     <th>ID</th>
-                    <th>Parent</th>
+                    <th>Ersetzt</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 {% for r in recipes %}
                 <tr>
+                    <td> {{ r.user.username }} </td>
                     <td> {{ r.name }} </td>
                     <td> {{ r.created }} </td>
                     <td> {{ r.id }} </td>
-                    <td> {{ r.parent_recipe.id }} </td>
+                    <td> {{ r.superseded }} </td>
                     {% if r.pinned %}
                         <td><a href="/recipes/pin_recipe/{{r.id}}" title="Rezept pin"><i class="fas fa-thumbtack text-success"></i></a></td>
                     {% else %}

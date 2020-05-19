@@ -60,7 +60,7 @@ def edit_dish(request, dish_id):
 def recipes(request, dish_id):
     dish = get_object_or_404(Dish, pk=dish_id)
     dishes = Dish.objects.all()
-    recipes = Recipe.objects.filter(dish=dish)
+    recipes = Recipe.objects.filter(dish=dish).filter(superseded=False)
 
     context = {
         'dishes': dishes,
@@ -107,7 +107,11 @@ def edit_recipe(request, recipe_id):
         form = RecipeForm(request.POST, instance=recipe)
         if form.is_valid():
             post = form.save(commit=False)
-            post.parent_recipe = get_object_or_404(Recipe, pk=recipe_id)
+            parent = get_object_or_404(Recipe, pk=recipe_id)
+            parent.superseded = True
+            parent.save()
+
+            post.parent_recipe = parent
             post.pinned = False
             post.save()
             return redirect('/recipes/recipe/' + str(recipe.id))
@@ -116,7 +120,6 @@ def edit_recipe(request, recipe_id):
     
     context = {'form': form, 'recipe': recipe}
     return render(request, 'recipes/edit_recipe.html', context)
-
 
 @login_required
 def recipe(request, recipe_id):

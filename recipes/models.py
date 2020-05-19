@@ -29,6 +29,7 @@ class Recipe(models.Model):
     text = models.TextField()
 
     pinned = models.BooleanField(default=False)
+    superseded = models.BooleanField(default=False)
 
     def __str__(self):
         return self.dish.name + ': ' + str(self.id)
