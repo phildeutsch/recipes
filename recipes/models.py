@@ -33,3 +33,6 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.dish.name + ': ' + str(self.id)
+
+class Guest(models.Model):
+    pass
