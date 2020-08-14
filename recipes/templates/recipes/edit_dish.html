@@ -20,6 +20,16 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="id_cat_ingredients">Kat. Zutaten</label>
+                    <input type="text" class="form-control" id="id_cat_ingredients" name="cat_ingredients" value="{{form.instance.cat_ingredients}}">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="id_etno">Region</label>
+                    <input type="text" class="form-control" id="id_etno" name="etno" value="{{form.instance.etno}}">
+                    </select>
+                </div>
+                <div class="form-group">
                     <input class="btn btn-secondary" type="button" id="loadFileXml" value="Bild hinzufügen" onclick="document.getElementById('picture').click();" />
                     <input type="file" style="display:none;" id="picture" name="picture"/>
                 </div>
