@@ -77,6 +77,7 @@ def add_recipe(request, dish_id):
         if form.is_valid():
             post = form.save(commit=False)
             post.dish = dish
+            post.user = request.user
             post.parent_recipe = None
             post.pinned = False
             post.save()

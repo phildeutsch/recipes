@@ -1,26 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="row">
-    <div class="col-lg-6">
-        {% include "recipes/cards/recipe.html" %}
+<div class="container">
+    <div style="overflow: hidden">
+        <h3>{{ recipe.dish.name }}: {{ recipe.name }} </h3>
+        <table id="recipe-table" class="table" style="width:45%">
+            <tbody>
+                <tr>
+                    <td>Iterationen</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>Zuletzt gekocht</td>
+                    <td>Gestern</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <div class="col-lg-6">
-        <div style="overflow: hidden">
-            <table id="recipe-table" class="table" style="width:100%">
-                <tbody>
-                    <tr>
-                        <td>Iterationen</td>
-                        <td>7</td>
-                    </tr>
-                    <tr>
-                        <td>Zuletzt gekocht</td>
-                        <td>Gestern</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+</div>
+
+<div class="card-deck">
+        {% include "recipes/cards/ingredients.html" %}
+        {% include "recipes/cards/instructions.html" %}
+</div>
+<div class="container">
+    <br>
+    <a class="btn btn-warning" href="/recipes/delete_recipe/{{recipe.id}}">Rezept entfernen</a>
+    <a class="btn btn-primary" href="/recipes/edit_recipe/{{recipe.id}}">Rezept bearbeiten</a>
 </div>
 
 {% endblock %}
