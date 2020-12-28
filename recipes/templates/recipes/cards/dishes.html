@@ -1,11 +1,13 @@
 <div class="card">
     <div class="card-body">
-        <div class="table-responsive" style="overflow: hidden">
+        <div class="table-responsive" style="overflow: auto">
             <table id="dashboard-table" class="table" style="width:100%">
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Typ</th>
+                        <th>Art</th>
+                        <th>Kat. d. Zutaten</th>
+                        <th>Region</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -19,6 +21,8 @@
                     {% endif %}
                         <td>{{dish.name}}</td>
                         <td>{{dish.type}}</td>
+                        <td>{{dish.cat_ingredients}}</td>
+                        <td>{{dish.etno}}</td>
                         <td><a href="/recipes/edit_dish/{{dish.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
                         {% if dish.id == dish_id %}
                             <td><a href="/recipes/dish/{{dish.id}}" title="Rezepte"><i class="fas fa-book-open"></i></a></td>
