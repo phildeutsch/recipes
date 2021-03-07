@@ -5,11 +5,7 @@ from .models import Dish, Recipe
 class DishForm(ModelForm):
     class Meta:
         model = Dish
-        exclude = ['user']
-
-    def __init__(self, *args, **kwargs):
-        super(DishForm, self).__init__(*args, **kwargs)
-        self.fields['picture'].required = False
+        exclude = ['user', 'picture']
 
 class RecipeForm(ModelForm):
     class Meta:
