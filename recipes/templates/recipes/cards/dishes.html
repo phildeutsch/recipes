@@ -6,8 +6,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Art</th>
-                        <th>Kat. d. Zutaten</th>
-                        <th>Region</th>
+                        <th>Cuisine</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -21,11 +20,10 @@
                     {% endif %}
                         <td>{{dish.name}}</td>
                         <td>{{dish.type}}</td>
-                        <td>{{dish.cat_ingredients}}</td>
-                        <td>{{dish.etno}}</td>
+                        <td>{{dish.cuisine}}</td>
                         <td><a href="/recipes/edit_dish/{{dish.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
                         {% if dish.id == dish_id %}
-                            <td><a href="/recipes/dish/{{dish.id}}" title="Rezepte"><i class="fas fa-book-open"></i></a></td>
+                            <td><a href="/" title="Rezepte"><i class="fas fa-book-open"></i></a></td>
                         {% else %}
                             <td><a href="/recipes/dish/{{dish.id}}" title="Rezepte"><i class="fas fa-book"></i></a></td>
                         {% endif %}
