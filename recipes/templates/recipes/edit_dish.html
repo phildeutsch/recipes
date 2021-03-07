@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load crispy_forms_tags %}
 
 <div class="col-md-6 ml-auto mr-auto">
     <div class="card card-white">
@@ -10,27 +11,10 @@
         <div class="card-body">
             <form method="POST" class="post-form" enctype="multipart/form-data"> 
                 {% csrf_token %}
-                <div class="form-group">
-                    <label for="id_name">Name</label>
-                    <input type="text" class="form-control" id="id_name" name="name" value="{{form.instance.name}}">
-                </div>
-                <div class="form-group">
-                    <label for="id_type">Typ</label>
-                    <input type="text" class="form-control" id="id_type" name="type" value="{{form.instance.type}}">
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="id_cuisine">Cuisine</label>
-                    <input type="text" class="form-control" id="id_etno" name="cuisine" value="{{form.instance.etno}}">
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input class="btn btn-secondary" type="button" id="loadFileXml" value="Bild hinzufügen" onclick="document.getElementById('picture').click();" />
-                    <input type="file" style="display:none;" id="picture" name="picture"/>
-                </div>
+                {{ form | crispy }}
     
                 <button type="submit" class="btn btn-primary">OK</button>
-                <a class="btn btn-secondary" href="/">Zurück</a>
+                <a class="btn btn-secondary" href="/recipes/dishes">Zurück</a>
                 <a class="btn btn-warning" href="{% url 'delete_dish' dish.id %}">Löschen</a>
             </form>
         </div>
