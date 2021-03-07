@@ -8,10 +8,7 @@ from accounts.models import User, Profile
 
 @login_required
 def index(request):
-    dishes = Dish.objects.all()
-
-    context = {'dishes': dishes}
-    return render(request, 'recipes/index.html', context)
+    return redirect('/recipes/dishes')
 
 @login_required
 def users(request):
@@ -21,13 +18,20 @@ def users(request):
 
 # Dish views
 @login_required
+def dishes(request):
+    dishes = Dish.objects.all()
+
+    context = {'dishes': dishes}
+    return render(request, 'recipes/dishes.html', context)
+
+@login_required
 def add_dish(request):
     if request.method == "POST":
         form = DishForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.save()
-            return redirect('/')
+            return redirect('/recipes/dishes')
     else:
         form = DishForm()
 
@@ -39,7 +43,7 @@ def delete_dish(request, dish_id):
     if dish.picture:
         dish.picture.delete()
     dish.delete()
-    return redirect('/')
+    return redirect('/recipes/dishes')
 
 @login_required
 def edit_dish(request, dish_id):
@@ -48,7 +52,7 @@ def edit_dish(request, dish_id):
         form = DishForm(request.POST, request.FILES, instance=dish)
         if form.is_valid():
             post = form.save()
-            return redirect('/')
+            return redirect('/recipes/dishes')
     else:
         form = DishForm(instance=dish)
     
@@ -59,15 +63,11 @@ def edit_dish(request, dish_id):
 @login_required
 def recipes(request, dish_id):
     dish = get_object_or_404(Dish, pk=dish_id)
-    dishes = Dish.objects.all()
     recipes = Recipe.objects.filter(dish=dish).all()
 
-    context = {
-        'dishes': dishes,
-        'dish_id': dish_id,
-        'recipes': recipes}
+    context = {'dish': dish, 'recipes': recipes}
 
-    return render(request, 'recipes/index.html', context)
+    return render(request, 'recipes/recipes.html', context)
 
 @login_required
 def add_recipe(request, dish_id):
@@ -78,21 +78,12 @@ def add_recipe(request, dish_id):
             post = form.save(commit=False)
             post.dish = dish
             post.user = request.user
-            post.parent_recipe = None
-            post.pinned = False
             post.save()
             return redirect('/recipes/dish/'+str(dish_id))
     else:
         form = RecipeForm()
 
     return render(request, 'recipes/add_recipe.html', {'form': form, 'dish': dish})
-
-@login_required
-def pin_recipe(request, recipe_id):
-    recipe = get_object_or_404(Recipe, pk=recipe_id)
-    recipe.pinned = 1 - recipe.pinned
-    recipe.save()
-    return redirect('/recipes/dish/'+str(recipe.dish.id))
 
 @login_required
 def delete_recipe(request, recipe_id):
