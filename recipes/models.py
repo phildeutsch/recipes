@@ -25,7 +25,7 @@ class Dish(models.Model):
     
     name = models.CharField(max_length=256)
     type = models.CharField(max_length=64, choices=DISH_TYPE_CHOICES)
-    cuisine = models.CharField(max_length=80, blank=True, null=True)
+    cuisine = models.CharField(max_length=80, blank=True, null=True, choices=DISH_CUISINE_CHOICES)
     picture = models.ImageField(null=True, blank=True, upload_to=RandomFileName('dishes'))
 
     class Meta:
