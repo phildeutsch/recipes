@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load crispy_forms_tags %}
 
 <div class="col-md-4 ml-auto mr-auto">
     <div class="card card-white">
@@ -8,66 +9,12 @@
         </div>
         <div class="card-body">
             <form method="POST" class="post-form" enctype="multipart/form-data"> 
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="id_name">Name</label>
-                <input type="text" class="form-control" id="id_name" name="name">
-            </div>
-            <div class="form-group">
-                <label for="id_type">Typ</label>
-                <select class="form-control" id="id_type" name="type">
-                    <option>----</option>
-                    <option>Vorspeise, Zwischengericht</option>
-                    <option>Suppe</option>
-                    <option>Hauptspeise</option>
-                    <option>Nachspeise</option>
-                    <option>Brot, Gebäck</option>
-                    <option>Salat</option>
-                    <option>Beilage</option>
-                    <option>Sauce, Dip</option>
-                    <option>Torte, Kuchen</option>
-                    <option>Marmelade</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="id_cat_ingredients">Kat. der Zutaten</label>
-                <select class="form-control" id="id_cat_ingredients" name="cat_ingredients">
-                    <option>----</option>
-                    <option>Fisch, Meeresfrüchte</option>
-                    <option>Fleisch</option>
-                    <option>Fleisch (Schwein)</option>
-                    <option>Fleisch (Rind)</option>
-                    <option>Fleisch (Wild)</option>
-                    <option>Fleisch (Lamm)</option>
-                    <option>Fleisch (Geflügel)</option>
-                    <option>Pasta</option>
-                    <option>vegetarisch</option>
-                    <option>vegetarisch - Gemüse</option>
-                    <option>vegetarisch - Pasta</option>
-                    <option>vegetarisch - Mehlspeise</option>
-                </select>    
-            </div>
-            <div class="form-group">
-                <label for="id_etno">Region</label>
-                <select class="form-control" id="id_etno" name="etno">
-                    <option>----</option>
-                    <option>Österreich</option>
-                    <option>Italien</option>
-                    <option>Frankreich</option>
-                    <option>Asien allg., Fusion</option>
-                    <option>China</option>
-                    <option>Thai</option>
-                    <option>Vietnam</option>
-                    <option>Japan</option>
-                    <option>Indien</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <input class="btn btn-secondary" type="button" id="loadFileXml" value="Bild hinzufügen" onclick="document.getElementById('picture').click();" />
-                <input type="file" style="display:none;" id="picture" name="picture"/>
-            </div>
-            <button type="submit" value="Submit" class="btn btn-primary">OK</button>
-            <a class="btn btn-primary" href="/">Zurück</a>
+                {% csrf_token %}
+
+                {{ form|crispy }}
+
+                <button type="submit" value="Submit" class="btn btn-primary">OK</button>
+                <a class="btn btn-primary" href="/">Zurück</a>
             </form>
         </div>
     </div>

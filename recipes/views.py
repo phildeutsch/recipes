@@ -38,7 +38,7 @@ def delete_dish(request, dish_id):
     dish = get_object_or_404(Dish, pk=dish_id)
     if dish.picture:
         dish.picture.delete()
-        dish.delete()
+    dish.delete()
     return redirect('/')
 
 @login_required

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'app',
     'accounts',
     'recipes',
+    'crispy_forms',
     'django_registration',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -154,6 +155,9 @@ USE_TZ = True
 # Redirect users after login and logout
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+# Crispy form template pack
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
