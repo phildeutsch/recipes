@@ -103,18 +103,10 @@ def delete_recipe(request, recipe_id):
 @login_required
 def edit_recipe(request, recipe_id):
     recipe = get_object_or_404(Recipe, pk=recipe_id)
-    recipe.id = None
     if request.method == "POST":
         form = RecipeForm(request.POST, instance=recipe)
         if form.is_valid():
             post = form.save(commit=False)
-            parent = get_object_or_404(Recipe, pk=recipe_id)
-            parent.superseded = True
-            parent.save()
-
-            post.parent_recipe = parent
-            post.pinned = False
-            post.save()
             return redirect('/recipes/recipe/' + str(recipe.id))
     else:
         form = DishForm(instance=recipe)
