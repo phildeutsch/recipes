@@ -6,19 +6,19 @@
         <div class="card-body">
             <table class="table">
                 <thead>
-                    <tr>
+                    <tr style="border-top: hidden">
                         <th>Benutzer</th>
+                        <th>Rezepte</th>
                         <th>Updates</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for u in users %}
-                        {% if u != request.user %}
                         <tr>
                             <td>{{ u }}</td>
+                            <td>17</td>
                             <td> <i class="far fa-check-square"></i> </td>
                         </tr>
-                        {% endif %}
                     {% endfor %}
                 </tbody>
             </table>
