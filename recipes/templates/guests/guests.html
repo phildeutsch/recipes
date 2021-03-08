@@ -4,11 +4,11 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            Köche
+            Gäste
         </div>
         <div class="card-body">
             <div class="table-responsive" style="overflow: auto">
-                {% if users %}
+                {% if guests %}
                     <table id="dashboard-table" class="table" style="width:100%">
                         <thead>
                             <tr style="border-top: hidden">
@@ -18,9 +18,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for u in users %}
+                            {% for g in guests %}
                             <tr>
-                                <td>{{u.username}}</td>
+                                <td>{{g.name}}</td>
                                 <!-- <td><a href="/guests/edit_guest/{{g.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
                                 <td><a href="/guests/delete_guest/{{g.id}}" title="Loeschen"><i class="fas fa-trash"></i></a></td> -->
                             </tr>
@@ -28,11 +28,12 @@
                         </tbody>
                     </table>
                 {% else %}
-                    No users set up
+                    No guests set up
                 {% endif %}
             </div>
         </div>
         <div class="card-footer">
+            <a class="btn btn-primary" href="/guests/add_guest">Gast hinzufügen</a>
         </div>
     </div>
 </div>

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
-from .models import Dish, Recipe
-from .forms import DishForm, RecipeForm
+from .models import Dish, Recipe, Guest, Activity
+from .forms import DishForm, RecipeForm, GuestForm
 
 from accounts.models import User, Profile
 
@@ -110,3 +110,25 @@ def recipe(request, recipe_id):
     recipe = get_object_or_404(Recipe, pk=recipe_id)
     context ={'recipe': recipe}
     return render(request, 'recipes/recipe.html', context)
+
+# Guest views
+@login_required
+def guests(request):
+    guests = Guest.objects.filter(user=request.user)
+
+    context = {'guests': guests}
+    return render(request, 'guests/guests.html', context)
+
+@login_required
+def add_guest(request):
+    if request.method == "POST":
+        form = GuestForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+            return redirect('/guests/guests')
+    else:
+        form = GuestForm()
+
+    return render(request, 'guests/add_guest.html', {'form': form})

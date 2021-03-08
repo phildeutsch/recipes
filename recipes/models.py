@@ -29,7 +29,7 @@ class Dish(models.Model):
     picture = models.ImageField(null=True, blank=True, upload_to=RandomFileName('dishes'))
 
     class Meta:
-        verbose_name_plural = "dishes"
+        verbose_name_plural = "Dishes"
 
     def __str__(self):
         return self.name
@@ -47,3 +47,25 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.dish.name + ': ' + str(self.id)
+
+class Guest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=128)
+    note = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+class Activity(models.Model):
+    datetime = models.DateTimeField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    recipes = models.ManyToManyField(Recipe)
+
+    guests = models.ManyToManyField(Guest, blank=True, null=True)
+    picture = models.ImageField(null=True, blank=True, upload_to=RandomFileName('activities'))
+
+    class Meta: 
+        verbose_name_plural = "Activities"
+
+    def __str__(self):
+        return self.id
