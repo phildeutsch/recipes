@@ -13,8 +13,11 @@
 
     <br>
 
-    <a class="btn btn-warning" href="/recipes/delete_recipe/{{recipe.id}}">Rezept entfernen</a>
-    <a class="btn btn-primary" href="/recipes/edit_recipe/{{recipe.id}}">Rezept bearbeiten</a>
+    <a class="btn btn-primary" href="/recipes/dish/{{recipe.dish.id}}">Zurück</a>
+    {% if recipe.user == request.user %}
+        <a class="btn btn-warning" href="/recipes/delete_recipe/{{recipe.id}}">Rezept entfernen</a>
+        <a class="btn btn-secondary" href="/recipes/edit_recipe/{{recipe.id}}">Rezept bearbeiten</a>
+    {% endif %}
 </div>
 
 {% endblock %}
