@@ -47,3 +47,21 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.dish.name + ': ' + str(self.id)
+
+class Guest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=128)
+    note = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+class Activity(models.Model):
+    datetime = models.DateTimeField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    guests = models.ManyToManyField(Guest)
+    recipes = models.ManyToManyField(Recipe)
+    picture = models.ImageField(null=True, blank=True, upload_to=RandomFileName('activities'))
+
+    def __str__(self):
+        return self.id
