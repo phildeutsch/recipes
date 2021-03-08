@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Gäste
+        </div>
+        <div class="card-body">
+            <div class="table-responsive" style="overflow: auto">
+                {% if guests %}
+                    <table id="dashboard-table" class="table" style="width:100%">
+                        <thead>
+                            <tr style="border-top: hidden">
+                                <th>Name</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for g in guests %}
+                            <tr>
+                                <td>{{g.name}}</td>
+                                <!-- <td><a href="/guests/edit_guest/{{g.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
+                                <td><a href="/guests/delete_guest/{{g.id}}" title="Loeschen"><i class="fas fa-trash"></i></a></td> -->
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    No guests set up
+                {% endif %}
+            </div>
+        </div>
+        <div class="card-footer">
+            <!-- <a class="btn btn-primary" href="/guests/add_guest">Gast hinzufügen</a> -->
+        </div>
+    </div>
+</div>
+{% endblock %}
