@@ -19,6 +19,7 @@ urlpatterns = [
     path('recipes/recipe/<int:recipe_id>', views.recipe, name='recipe'),
 
     # Guest URLs
-    path('guests/guests', views.guests, name='guests')
+    path('guests/guests', views.guests, name='guests'),
+    path('guests/add_guest', views.add_guest, name='add_guest')
 
 ]
