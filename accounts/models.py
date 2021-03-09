@@ -2,13 +2,15 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models.signals import post_save 
 from django.dispatch import receiver
+from app.helpers import RandomFileName 
 
 class User(AbstractUser):
     pass
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    setting = models.IntegerField()
+    display_name = models.CharField(max_length=128, null=True, blank=True)
+    picture = models.ImageField(null=True, blank=True, upload_to=RandomFileName('profiles'))
 
     def __str__(self):
         return self.user.username
