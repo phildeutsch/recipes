@@ -5,6 +5,9 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('users', views.users, name='users'),
 
+    path('accounts/profile', views.profile, name='profile'),
+    path('accounts/edit_profile', views.edit_profile, name='edit_profile'),
+
     # Dish URLs
     path('recipes/dishes', views.dishes, name='dishes'),
     path('recipes/dish/<int:dish_id>', views.recipes, name='recipes'),
@@ -20,6 +23,9 @@ urlpatterns = [
 
     # Guest URLs
     path('guests/guests', views.guests, name='guests'),
-    path('guests/add_guest', views.add_guest, name='add_guest')
+    path('guests/add_guest', views.add_guest, name='add_guest'),
 
+    # Activity URLs
+    path('activities/activities', views.activities, name='activities'),
+    path('activities/add_activity', views.add_activity, name='add_activity')
 ]
