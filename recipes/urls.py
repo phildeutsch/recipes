@@ -5,6 +5,9 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('users', views.users, name='users'),
 
+    path('accounts/profile', views.profile, name='profile'),
+    path('accounts/edit_profile', views.edit_profile, name='edit_profile'),
+
     # Dish URLs
     path('recipes/dishes', views.dishes, name='dishes'),
     path('recipes/dish/<int:dish_id>', views.recipes, name='recipes'),

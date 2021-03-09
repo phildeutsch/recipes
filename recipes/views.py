@@ -5,10 +5,32 @@ from .models import Dish, Recipe, Guest, Activity
 from .forms import DishForm, RecipeForm, GuestForm, ActivityForm
 
 from accounts.models import User, Profile
+from accounts.forms import ProfileForm
 
 @login_required
 def index(request):
     return redirect('/recipes/dishes')
+
+@login_required
+def profile(request):
+    profile = Profile.objects.filter(user=request.user).get()
+    context = {'p': profile} 
+    return render(request, 'accounts/profile.html', context)
+
+@login_required
+def edit_profile(request):
+    profile = Profile.objects.filter(user=request.user).get()
+    if request.method == "POST":
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            post = form.save()
+            return redirect('/accounts/profile')
+    else:
+        form = ProfileForm(instance=profile)
+    
+    context = {'form': form, 'p': profile}
+    return render(request, 'accounts/edit_profile.html', context)
+
 
 @login_required
 def users(request):
