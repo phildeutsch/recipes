@@ -16,3 +16,8 @@ class GuestForm(ModelForm):
     class Meta:
         model = Guest
         exclude = ['user']
+
+class ActivityForm(ModelForm):
+    class Meta:
+        model = Activity
+        exclude = ['user', 'datetime']
