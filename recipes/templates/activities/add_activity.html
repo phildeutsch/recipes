@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="col-md-4 ml-auto mr-auto">
+    <div class="card card-white">
+        <div class="card-header">
+            <h3 class="card-title">Aktivität hinzufügen</h3>
+        </div>
+        <div class="card-body">
+            <form method="POST" class="post-form" enctype="multipart/form-data"> 
+                {% csrf_token %}
+
+                {{ form|crispy }}
+
+                <button type="submit" value="Submit" class="btn btn-primary">OK</button>
+                <a class="btn btn-primary" href="/">Zurück</a>
+            </form>
+        </div>
+    </div>
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}

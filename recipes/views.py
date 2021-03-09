@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 from .models import Dish, Recipe, Guest, Activity
-from .forms import DishForm, RecipeForm, GuestForm
+from .forms import DishForm, RecipeForm, GuestForm, ActivityForm
 
 from accounts.models import User, Profile
 
@@ -132,3 +132,25 @@ def add_guest(request):
         form = GuestForm()
 
     return render(request, 'guests/add_guest.html', {'form': form})
+
+# Activity views
+@login_required
+def activities(request):
+    activities = Activity.objects.filter(user=request.user)
+
+    context = {'activities': activities}
+    return render(request, 'activities/activities.html', context)
+
+@login_required
+def add_activity(request):
+    if request.method == "POST":
+        form = ActivityForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+            return redirect('/activities/activities')
+    else:
+        form = ActivityForm()
+
+    return render(request, 'activities/add_activity.html', {'form': form})

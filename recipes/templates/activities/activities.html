@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Aktivitäten
+        </div>
+        <div class="card-body">
+            <div class="table-responsive" style="overflow: auto">
+                {% if activities %}
+                    <table id="dashboard-table" class="table" style="width:100%">
+                        <thead>
+                            <tr style="border-top: hidden">
+                                <th>Zeit</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for a in activity %}
+                            <tr>
+                                <td>{{g.datetime}}</td>
+                                <!-- <td><a href="/guests/edit_guest/{{g.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
+                                <td><a href="/guests/delete_guest/{{g.id}}" title="Loeschen"><i class="fas fa-trash"></i></a></td> -->
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    No activities
+                {% endif %}
+            </div>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-primary" href="/activities/add_activity">Aktivität hinzufügen</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -11,16 +11,16 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         {% if 'activity' in request.path%}
-          <a class="nav-link active" href="/activities">Aktivitäten</a>
+          <a class="nav-link active" href="/activities/activities">Aktivitäten</a>
         {% else %}
-          <a class="nav-link" href="/activities">Aktivitäten</a>
+          <a class="nav-link" href="/activities/activities">Aktivitäten</a>
         {% endif %}
       </li>
       <li class="nav-item">
         {% if 'recipes' in request.path or request.path == '/' %}
-          <a class="nav-link active" href="/">Rezepte</a>
+          <a class="nav-link active" href="/recipes/dishes">Rezepte</a>
         {% else %}
-          <a class="nav-link" href="/">Rezepte</a>
+          <a class="nav-link" href="/recipes/dishes">Rezepte</a>
         {% endif %}
       </li>
       <li class="nav-item">

@@ -20,6 +20,9 @@ urlpatterns = [
 
     # Guest URLs
     path('guests/guests', views.guests, name='guests'),
-    path('guests/add_guest', views.add_guest, name='add_guest')
+    path('guests/add_guest', views.add_guest, name='add_guest'),
 
+    # Activity URLs
+    path('activities/activities', views.activities, name='activities'),
+    path('activities/add_activity', views.add_activity, name='add_activity')
 ]
