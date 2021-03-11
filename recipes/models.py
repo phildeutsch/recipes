@@ -59,7 +59,7 @@ class Activity(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recipes = models.ManyToManyField(Recipe)
 
-    guests = models.ManyToManyField(Guest, blank=True, null=True)
+    guests = models.ManyToManyField(Guest, blank=True)
     picture = models.ImageField(null=True, blank=True, upload_to=RandomFileName('activities'))
 
     class Meta: 
