@@ -3,29 +3,27 @@ from django.forms import ModelForm
 from django.utils import timezone
 from datetime import datetime
 from app.helpers import RandomFileName 
+from django.utils.translation import gettext_lazy as _
 
 from accounts.models import User
 
-DISH_TYPE_CHOICES = [
-    ('Vorspeise', 'Vorspeise'),
-    ('Hauptspeise', 'Hauptspeise'),
-    ('Suppe', 'Suppe'),
-    ('Torte und Kuchen', 'Torte und Kuchen'),
-    ('Nachspeise', 'Nachspeise'),
-    ('Cocktail', 'Cocktail')
+DISH_COURSE_CHOICES = [
+    (1, _('First course')),
+    (2, _('Main course')),
+    (3, _('Dessert'))
 ]
 
 DISH_CUISINE_CHOICES = [
-    ('Amerikanisch', 'Amerikanisch'),
-    ('Österreichisch', 'Österreichisch'),
-    ('Italienisch', 'Italienisch')
+    (1, _('Austrian')),
+    (2, _('British')),
+    (3, _('Italian'))
 ]
 
 class Dish(models.Model):
     
     name = models.CharField(max_length=256)
-    type = models.CharField(max_length=64, choices=DISH_TYPE_CHOICES)
-    cuisine = models.CharField(max_length=80, blank=True, null=True, choices=DISH_CUISINE_CHOICES)
+    course = models.IntegerField(choices=DISH_COURSE_CHOICES, blank=True, null=True)
+    cuisine = models.IntegerField(choices=DISH_CUISINE_CHOICES, blank=True, null=True)
     picture = models.ImageField(null=True, blank=True, upload_to=RandomFileName('dishes'))
 
     class Meta:
