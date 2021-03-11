@@ -142,7 +142,7 @@ AUTH_USER_MODEL = 'accounts.User'
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'de'
 
 TIME_ZONE = 'UTC'
 
@@ -151,6 +151,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, "locale"),
+)
 
 # Redirect users after login and logout
 LOGIN_REDIRECT_URL = '/'
