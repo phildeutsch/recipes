@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!doctype html>
 <html lang="en">
@@ -21,16 +22,16 @@
       {% csrf_token %}
       <img class="mb-4" src="{% static 'img/logo.PNG' %}" alt="" width="72" height="72">
       <!-- <h1 class="h3 mb-3 font-weight-normal">Bitte melde dich an</h1> -->
-      <input type="username" name="username" required id="id_username" class="form-control" placeholder="Benutzername"/>
+      <input type="username" name="username" required id="id_username" class="form-control" placeholder="{% trans 'Username' %}"/>
       <br>
-      <input type="email" name="email" required id="id_email" class="form-control" placeholder="Email"/>
+      <input type="email" name="email" required id="id_email" class="form-control" placeholder="{% trans 'Email' %}"/>
       <br>
-      <input type="password" name="password1" required id="id_password1" class="form-control" placeholder="Passwort"/>
+      <input type="password" name="password1" required id="id_password1" class="form-control" placeholder="{% trans 'Password' %}"/>
       <br>
-      <input type="password" name="password2" required id="id_password2" class="form-control" placeholder="Nochmal Passwort"/> 
+      <input type="password" name="password2" required id="id_password2" class="form-control" placeholder="{% trans 'Password again' %}"/> 
       <br>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Registrieren</button>
-      <br><a href="/accounts/login">Zur Anmeldung</a>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">{% trans 'Register' %}</button>
+      <br><a href="/accounts/login">{% trans 'Back to log in' %}</a>
 
     </form>
     {% if form.errors %}

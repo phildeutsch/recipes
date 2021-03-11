@@ -10,7 +10,8 @@ from accounts.models import User
 DISH_COURSE_CHOICES = [
     (1, _('First course')),
     (2, _('Main course')),
-    (3, _('Dessert'))
+    (3, _('Dessert')),
+    (4, _('Cocktail'))
 ]
 
 DISH_CUISINE_CHOICES = [
