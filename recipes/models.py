@@ -7,21 +7,17 @@ from django.utils.translation import gettext_lazy as _
 
 from accounts.models import User
 
-DISH_COURSE_CHOICES = [
-    (1, _('First course')),
-    (2, _('Main course')),
-    (3, _('Dessert')),
-    (4, _('Cocktail'))
-]
-
-DISH_CUISINE_CHOICES = [
-    (1, _('Austrian')),
-    (2, _('British')),
-    (3, _('Italian'))
-]
-
 class Dish(models.Model):
-    
+    DISH_COURSE_CHOICES = [
+        (1, _('First course')),
+        (2, _('Main course')),
+        (3, _('Dessert')),
+        (4, _('Cocktail'))]
+    DISH_CUISINE_CHOICES = [
+        (1, _('Austrian')),
+        (2, _('British')),
+        (3, _('Italian'))]
+
     name = models.CharField(max_length=256)
     course = models.IntegerField(choices=DISH_COURSE_CHOICES, blank=True, null=True)
     cuisine = models.IntegerField(choices=DISH_CUISINE_CHOICES, blank=True, null=True)

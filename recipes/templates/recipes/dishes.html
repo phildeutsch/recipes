@@ -29,8 +29,8 @@
                         {% endif %}
                             <td><a href="/recipes/delete_dish/{{dish.id}}" title="Loeschen"><i class="fas fa-trash"></i></a></td>
                             <td>{{dish.name}}</td>
-                            <td>{{dish.course}}</td>
-                            <td>{{dish.cuisine}}</td>
+                            <td>{{dish.get_course_display}}</td>
+                            <td>{{dish.get_cuisine_display}}</td>
                             <td><a href="/recipes/edit_dish/{{dish.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
                             {% if dish.id == dish_id %}
                                 <td><a href="/" title="Rezepte"><i class="fas fa-book-open"></i></a></td>
