@@ -99,8 +99,10 @@ if ON_HEROKU:
     DB_HOST = os.environ['DB_HOST']
     DB_PORT = os.environ['DB_PORT']
 else:
-    DB = 'DATABASE_LOCAL'
-    # DB = 'DATABASE_PROD'
+    if PROD:
+        DB = 'DATABASE_PROD'
+    else:
+        DB = 'DATABASE_LOCAL'
     config = configparser.ConfigParser()
     config.read('app/config.ini')
     DB_NAME = config[DB]['DB_NAME']
