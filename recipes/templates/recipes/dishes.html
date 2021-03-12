@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load i18n %}
 
 <div class="container">
     <div class="card">
         <div class="card-header">
-            Gerichte
+            {% trans 'Dishes' %}
         </div>
         <div class="card-body">
             <div class="table-responsive" style="overflow: auto">
@@ -12,9 +13,9 @@
                     <thead>
                         <tr style="border-top: hidden">
                             <th></th>
-                            <th>Name</th>
-                            <th>Art</th>
-                            <th>Cuisine</th>
+                            <th>{% trans 'Dish' %}</th>
+                            <th>{% trans 'Course' %}</th>
+                            <th>{% trans 'Cuisine' %}</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -28,8 +29,8 @@
                         {% endif %}
                             <td><a href="/recipes/delete_dish/{{dish.id}}" title="Loeschen"><i class="fas fa-trash"></i></a></td>
                             <td>{{dish.name}}</td>
-                            <td>{{dish.type}}</td>
-                            <td>{{dish.cuisine}}</td>
+                            <td>{{dish.get_course_display}}</td>
+                            <td>{{dish.get_cuisine_display}}</td>
                             <td><a href="/recipes/edit_dish/{{dish.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
                             {% if dish.id == dish_id %}
                                 <td><a href="/" title="Rezepte"><i class="fas fa-book-open"></i></a></td>
@@ -43,7 +44,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <a class="btn btn-primary" href="/recipes/add_dish">Gericht hinzufügen</a>
+            <a class="btn btn-primary" href="/recipes/add_dish">{% trans 'Add dish' %}</a>
         </div>
     </div>
 </div>
