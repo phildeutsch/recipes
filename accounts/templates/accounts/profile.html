@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load i18n %}
 
 <div class="container">
     <div class="card">
         <div class="card-header">
-            Profil
+            {% trans 'Profile' %}
         </div>
         <div class="card-body">
-            <img class="mb-4" src="/media/{{p.picture}}" alt="" width="72" height="72">
-            <p>Username: {{p.user.username}}</p>
-            <p>Angezeigter Name: {{p.display_name}}</p>
-            <p>Language: {{p.language}}</p>
+            <img class="mb-4" src="{{MEDIA_URL}}{{p.picture}}" alt="" width="72" height="72">
+            <p>{% trans 'Username'%}: {{p.user.username}}</p>
+            <p>{% trans 'Display name'%}: {{p.display_name}}</p>
+            <p>{% trans 'Language'%}: {{p.language}}</p>
         </div>
         <div class="card-footer">
-            <a class="btn btn-primary" href="/accounts/edit_profile">Profil bearbeiten</a>
+            <a class="btn btn-primary" href="/accounts/edit_profile">{% trans 'Edit profile' %}</a>
         </div>
     </div>
 </div>
