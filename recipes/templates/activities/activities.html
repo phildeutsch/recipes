@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load i18n %}
 
 <div class="container">
     <div class="card">
         <div class="card-header">
-            Aktivitäten
+            {% trans 'Activities' %}
         </div>
         <div class="card-body">
             <div class="table-responsive" style="overflow: auto">
@@ -12,7 +13,7 @@
                     <table id="dashboard-table" class="table" style="width:100%">
                         <thead>
                             <tr style="border-top: hidden">
-                                <th>Zeit</th>
+                                <th>{% trans 'Time' %}</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -28,12 +29,12 @@
                         </tbody>
                     </table>
                 {% else %}
-                    No activities
+                    {% trans 'No activities' %}
                 {% endif %}
             </div>
         </div>
         <div class="card-footer">
-            <a class="btn btn-primary" href="/activities/add_activity">Aktivität hinzufügen</a>
+            <a class="btn btn-primary" href="/activities/add_activity">{% trans 'Add activity' %}</a>
         </div>
     </div>
 </div>

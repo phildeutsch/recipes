@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 
 <div class="col-md-4 ml-auto mr-auto">
     <div class="card card-white">
         <div class="card-header">
-            <h3 class="card-title">Gericht hinzufügen</h3>
+            <h3 class="card-title">{% trans 'Add dish' %}</h3>
         </div>
         <div class="card-body">
             <form method="POST" class="post-form" enctype="multipart/form-data"> 
@@ -13,19 +14,18 @@
 
                 {{ form|crispy }}
 
-                <button type="submit" value="Submit" class="btn btn-primary">OK</button>
-                <a class="btn btn-primary" href="/">Zurück</a>
+                <button type="submit" value="Submit" class="btn btn-primary">{% trans 'OK' %}</button>
+                <a class="btn btn-primary" href="/">{% trans 'Back' %}</a>
             </form>
         </div>
     </div>
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+    {% endif %}
 </div>
-
-{% if form.non_field_errors %}
-{% for error in form.non_field_errors %}
-    <div class="alert alert-danger">
-        <strong>{{ error|escape }}</strong>
-    </div>
-{% endfor %}
-{% endif %}
 
 {% endblock %}

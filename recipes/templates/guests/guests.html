@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load i18n %}
 
 <div class="container">
     <div class="card">
         <div class="card-header">
-            Gäste
+            {% trans 'Guests' %}
         </div>
         <div class="card-body">
             <div class="table-responsive" style="overflow: auto">
@@ -12,7 +13,7 @@
                     <table id="dashboard-table" class="table" style="width:100%">
                         <thead>
                             <tr style="border-top: hidden">
-                                <th>Name</th>
+                                <th>{% trans 'Name' %}</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -28,12 +29,12 @@
                         </tbody>
                     </table>
                 {% else %}
-                    No guests set up
+                    {% trans 'No guests set up' %}
                 {% endif %}
             </div>
         </div>
         <div class="card-footer">
-            <a class="btn btn-primary" href="/guests/add_guest">Gast hinzufügen</a>
+            <a class="btn btn-primary" href="/guests/add_guest">{% trans 'Add guest' %}</a>
         </div>
     </div>
 </div>
