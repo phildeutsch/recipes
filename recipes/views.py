@@ -36,13 +36,6 @@ def edit_profile(request):
     context = {'form': form, 'p': profile}
     return render(request, 'accounts/edit_profile.html', context)
 
-
-@login_required
-def cooks(request):
-    cooks = User.objects.all()
-    context = {'cooks': cooks} 
-    return render(request, 'cooks/cooks.html', context)
-
 # Dish views
 @login_required
 def dishes(request):

@@ -26,10 +26,11 @@
                         <table id="dashboard-table" class="table" style="width:100%">
                             <thead>
                                 <tr style="border-top: hidden">
-                                    <th></th>
                                     <th>{% trans 'Dish' %}</th>
                                     <th>{% trans 'Course' %}</th>
                                     <th>{% trans 'Cuisine' %}</th>
+                                    <th>{% trans 'Total Recipes' %}</th>
+                                    <th></th>
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -41,10 +42,11 @@
                                 {% else %}
                                 <tr></tr>
                                 {% endif %}
-                                    <td><a href="/delete_dish/{{dish.id}}" title="Loeschen"><i class="fas fa-trash"></i></a></td>
                                     <td>{{dish.name}}</td>
                                     <td>{{dish.get_course_display}}</td>
                                     <td>{{dish.get_cuisine_display}}</td>
+                                    <td>{{dish.recipe_set.count}}</td>
+                                    <td><a href="/delete_dish/{{dish.id}}" title="Loeschen"><i class="fas fa-trash"></i></a></td>
                                     <td><a href="/edit_dish/{{dish.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
                                     {% if dish.id == dish_id %}
                                         <td><a href="/" title="Rezepte"><i class="fas fa-book-open"></i></a></td>
