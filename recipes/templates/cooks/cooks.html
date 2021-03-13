@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive" style="overflow: auto">
-                {% if users %}
+                {% if cooks %}
                     <table id="dashboard-table" class="table" style="width:100%">
                         <thead>
                             <tr style="border-top: hidden">
@@ -19,7 +19,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for u in users %}
+                            {% for u in cooks %}
                             <tr>
                                 <td>{{u.profile.display_name}}</td>
                                 <!-- <td><a href="/guests/edit_guest/{{g.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
