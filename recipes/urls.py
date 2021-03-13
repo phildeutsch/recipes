@@ -3,10 +3,11 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('users', views.users, name='users'),
+    path('dashboard', views.dashboard, name='dashboard'),
 
-    path('accounts/profile', views.profile, name='profile'),
-    path('accounts/edit_profile', views.edit_profile, name='edit_profile'),
+    # Account URLs
+    path('profile', views.profile, name='profile'),
+    path('edit_profile', views.edit_profile, name='edit_profile'),
 
     # Dish URLs
     path('dishes', views.dishes, name='dishes'),
@@ -18,14 +19,17 @@ urlpatterns = [
     # Recipe URLs
     path('add_recipe/<int:dish_id>', views.add_recipe, name='add_recipe'),
     path('delete_recipe/<int:recipe_id>', views.delete_recipe, name='delete_recipe'),
-    path('recipes/edit_recipe/<int:recipe_id>', views.edit_recipe, name='edit_recipe'),
-    path('recipes/recipe/<int:recipe_id>', views.recipe, name='recipe'),
+    path('edit_recipe/<int:recipe_id>', views.edit_recipe, name='edit_recipe'),
+    path('recipe/<int:recipe_id>', views.recipe, name='recipe'),
+
+    # Cooks
+    path('cooks', views.cooks, name='cooks'),
 
     # Guest URLs
-    path('guests/guests', views.guests, name='guests'),
-    path('guests/add_guest', views.add_guest, name='add_guest'),
+    path('guests', views.guests, name='guests'),
+    path('add_guest', views.add_guest, name='add_guest'),
 
     # Activity URLs
-    path('activities/activities', views.activities, name='activities'),
-    path('activities/add_activity', views.add_activity, name='add_activity')
+    path('activities', views.activities, name='activities'),
+    path('add_activity', views.add_activity, name='add_activity')
 ]
