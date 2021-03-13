@@ -22,9 +22,6 @@ urlpatterns = [
     path('edit_recipe/<int:recipe_id>', views.edit_recipe, name='edit_recipe'),
     path('recipe/<int:recipe_id>', views.recipe, name='recipe'),
 
-    # Cooks
-    path('cooks', views.cooks, name='cooks'),
-
     # Guest URLs
     path('guests', views.guests, name='guests'),
     path('add_guest', views.add_guest, name='add_guest'),
