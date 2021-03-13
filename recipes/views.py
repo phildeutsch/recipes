@@ -9,7 +9,12 @@ from accounts.forms import ProfileForm
 
 @login_required
 def index(request):
-    return redirect('/dishes')
+    return redirect('/dashboard')
+
+@login_required
+def dashboard(request):
+    context = {} 
+    return render(request, 'dashboard.html', context)
 
 @login_required
 def profile(request):
@@ -24,7 +29,7 @@ def edit_profile(request):
         form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             post = form.save()
-            return redirect('/accounts/profile')
+            return redirect('/profile')
     else:
         form = ProfileForm(instance=profile)
     
@@ -33,10 +38,10 @@ def edit_profile(request):
 
 
 @login_required
-def users(request):
-    users = User.objects.all()
-    context = {'users': users} 
-    return render(request, 'users/users.html', context)
+def cooks(request):
+    cooks = User.objects.all()
+    context = {'cooks': cooks} 
+    return render(request, 'cooks/cooks.html', context)
 
 # Dish views
 @login_required
@@ -120,7 +125,7 @@ def edit_recipe(request, recipe_id):
         form = RecipeForm(request.POST, instance=recipe)
         if form.is_valid():
             post = form.save(commit=False)
-            return redirect('/recipes/recipe/' + str(recipe.id))
+            return redirect('/recipe/' + str(recipe.id))
     else:
         form = DishForm(instance=recipe)
     
@@ -149,7 +154,7 @@ def add_guest(request):
             post = form.save(commit=False)
             post.user = request.user
             post.save()
-            return redirect('/guests/guests')
+            return redirect('/guests')
     else:
         form = GuestForm()
 
@@ -171,7 +176,7 @@ def add_activity(request):
             post = form.save(commit=False)
             post.user = request.user
             post.save()
-            return redirect('/activities/activities')
+            return redirect('/activities')
     else:
         form = ActivityForm()
 
