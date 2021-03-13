@@ -2,7 +2,6 @@
 {% block content %}
 {% load i18n %}
 
-<div class="container">
     <div class="row">
         <div class="col-3">
             <div class="card">
@@ -42,15 +41,15 @@
                                 {% else %}
                                 <tr></tr>
                                 {% endif %}
-                                    <td><a href="/recipes/delete_dish/{{dish.id}}" title="Loeschen"><i class="fas fa-trash"></i></a></td>
+                                    <td><a href="/delete_dish/{{dish.id}}" title="Loeschen"><i class="fas fa-trash"></i></a></td>
                                     <td>{{dish.name}}</td>
                                     <td>{{dish.get_course_display}}</td>
                                     <td>{{dish.get_cuisine_display}}</td>
-                                    <td><a href="/recipes/edit_dish/{{dish.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
+                                    <td><a href="/edit_dish/{{dish.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
                                     {% if dish.id == dish_id %}
                                         <td><a href="/" title="Rezepte"><i class="fas fa-book-open"></i></a></td>
                                     {% else %}
-                                        <td><a href="/recipes/dish/{{dish.id}}" title="Rezepte"><i class="fas fa-book"></i></a></td>
+                                        <td><a href="/dish/{{dish.id}}" title="Rezepte"><i class="fas fa-book"></i></a></td>
                                     {% endif %}
                                 </tr>
                                 {% endfor %}
@@ -59,10 +58,9 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-primary" href="/recipes/add_dish">{% trans 'Add dish' %}</a>
+                    <a class="btn btn-primary" href="/add_dish">{% trans 'Add dish' %}</a>
                 </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
