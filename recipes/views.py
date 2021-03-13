@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Dish, Recipe, Guest, Activity
 from .forms import DishForm, RecipeForm, GuestForm, ActivityForm
+from .filters import DishFilter
 
 from accounts.models import User, Profile
 from accounts.forms import ProfileForm
@@ -40,8 +41,9 @@ def edit_profile(request):
 @login_required
 def dishes(request):
     dishes = Dish.objects.all()
+    f = DishFilter(request.GET, queryset=dishes)
 
-    context = {'dishes': dishes}
+    context = {'dishes': dishes, 'filter': f}
     return render(request, 'recipes/dishes.html', context)
 
 @login_required
