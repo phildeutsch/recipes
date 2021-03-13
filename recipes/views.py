@@ -9,7 +9,7 @@ from accounts.forms import ProfileForm
 
 @login_required
 def index(request):
-    return redirect('/recipes/dishes')
+    return redirect('/dishes')
 
 @login_required
 def profile(request):
@@ -53,7 +53,7 @@ def add_dish(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.save()
-            return redirect('/recipes/dishes')
+            return redirect('/dishes')
     else:
         form = DishForm()
 
@@ -65,7 +65,7 @@ def delete_dish(request, dish_id):
     if dish.picture:
         dish.picture.delete()
     dish.delete()
-    return redirect('/recipes/dishes')
+    return redirect('/dishes')
 
 @login_required
 def edit_dish(request, dish_id):
@@ -74,7 +74,7 @@ def edit_dish(request, dish_id):
         form = DishForm(request.POST, request.FILES, instance=dish)
         if form.is_valid():
             post = form.save()
-            return redirect('/recipes/dishes')
+            return redirect('/dishes')
     else:
         form = DishForm(instance=dish)
     
@@ -101,7 +101,7 @@ def add_recipe(request, dish_id):
             post.dish = dish
             post.user = request.user
             post.save()
-            return redirect('/recipes/dish/'+str(dish_id))
+            return redirect('/dish/'+str(dish_id))
     else:
         form = RecipeForm()
 
@@ -111,7 +111,7 @@ def add_recipe(request, dish_id):
 def delete_recipe(request, recipe_id):
     recipe = get_object_or_404(Recipe, pk=recipe_id)
     recipe.delete()
-    return redirect('/recipes/dish/'+str(recipe.dish.id))
+    return redirect('/dish/'+str(recipe.dish.id))
 
 @login_required
 def edit_recipe(request, recipe_id):

@@ -19,9 +19,9 @@
       </li>
       <li class="nav-item">
         {% if 'recipes' in request.path or request.path == '/' %}
-          <a class="nav-link active" href="/recipes/dishes">{% trans 'Cook book' %}</a>
+          <a class="nav-link active" href="/dishes">{% trans 'Cook book' %}</a>
         {% else %}
-          <a class="nav-link" href="/recipes/dishes">{% trans 'Cook book' %}</a>
+          <a class="nav-link" href="/dishes">{% trans 'Cook book' %}</a>
         {% endif %}
       </li>
       <li class="nav-item">
