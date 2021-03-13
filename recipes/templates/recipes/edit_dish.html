@@ -15,7 +15,7 @@
                 {{ form | crispy }}
     
                 <button type="submit" class="btn btn-primary">{% trans 'OK' %}</button>
-                <a class="btn btn-secondary" href="/recipes/dishes">{% trans 'Back' %}</a>
+                <a class="btn btn-secondary" href="/dishes">{% trans 'Back' %}</a>
                 <a class="btn btn-warning" href="{% url 'delete_dish' dish.id %}">{% trans 'Delete' %}</a>
             </form>
         </div>
