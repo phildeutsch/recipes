@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'accounts',
     'recipes',
     'crispy_forms',
+    'django_filters',
     'django_registration',
     'django.contrib.admin',
     'django.contrib.auth',
