@@ -41,8 +41,8 @@ class Recipe(models.Model):
     text = models.TextField()
 
     def __str__(self):
-        return self.dish.name + ': ' + str(self.id)
-
+        return self.dish.name + ': ' + self.name
+        
 class Guest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=128)

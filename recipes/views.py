@@ -10,7 +10,7 @@ from accounts.forms import ProfileForm
 
 @login_required
 def index(request):
-    return redirect('/dashboard')
+    return redirect('/activities')
 
 @login_required
 def dashboard(request):
