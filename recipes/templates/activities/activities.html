@@ -2,40 +2,25 @@
 {% block content %}
 {% load i18n %}
 
-<div class="container">
-    <div class="card">
-        <div class="card-header">
-            {% trans 'Activities' %}
-        </div>
-        <div class="card-body">
-            <div class="table-responsive" style="overflow: auto">
-                {% if activities %}
-                    <table id="dashboard-table" class="table" style="width:100%">
-                        <thead>
-                            <tr style="border-top: hidden">
-                                <th>{% trans 'Time' %}</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for a in activity %}
-                            <tr>
-                                <td>{{g.datetime}}</td>
-                                <!-- <td><a href="/guests/edit_guest/{{g.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
-                                <td><a href="/guests/delete_guest/{{g.id}}" title="Loeschen"><i class="fas fa-trash"></i></a></td> -->
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                {% else %}
-                    {% trans 'No activities' %}
-                {% endif %}
+<div class="col-md-6 ml-auto mr-auto">
+{% if activities %}
+    <div class="card-deck">
+        {% for a in activities %}
+        <div class="card" style="width: 18rem;">
+            {% if a.picture %}
+                <img class="card-img-top" src={{a.picture.url}} width="256">
+            {% endif %}                     
+            <div class="card-body">
+                <h5 class="card-title">{{a.user.profile.display_name}}</h5>
+                <p class="card-text">{{a.datetime}}</p>
+                <p class="card-text">View details</p>
             </div>
         </div>
-        <div class="card-footer">
-            <a class="btn btn-primary" href="/activities/add_activity">{% trans 'Add activity' %}</a>
-        </div>
+        {% endfor %}
     </div>
+{% else %}
+    {% trans 'No activities' %}
+{% endif %}
 </div>
+
 {% endblock %}
