@@ -49,7 +49,7 @@
                                 <td>{{dish.get_course_display}}</td>
                                 <td>{{dish.get_cuisine_display}}</td>
                                 <td>{{dish.recipe_set.count}}</td>
-                                <td><a href="/delete_dish/{{dish.id}}" title="Loeschen"><i class="fas fa-trash"></i></a></td>
+                                <!-- <td><a href="/delete_dish/{{dish.id}}" title="Loeschen"><i class="fas fa-trash"></i></a></td> -->
                                 <td><a href="/edit_dish/{{dish.id}}" title="Bearbeiten"><i class="fas fa-edit"></i></a></td>
                                 {% if dish.id == dish_id %}
                                     <td><a href="/" title="Rezepte"><i class="fas fa-book-open"></i></a></td>
