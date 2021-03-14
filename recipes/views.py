@@ -159,20 +159,19 @@ def add_guest(request):
 @login_required
 def activities(request):
     activities = Activity.objects.filter(user=request.user)
-
     context = {'activities': activities}
     return render(request, 'activities/activities.html', context)
 
 @login_required
 def add_activity(request):
     if request.method == "POST":
-        form = ActivityForm(request.POST)
+        form = ActivityForm(request.POST, request.FILES, user=request.user)
         if form.is_valid():
             post = form.save(commit=False)
             post.user = request.user
             post.save()
             return redirect('/activities')
     else:
-        form = ActivityForm()
+        form = ActivityForm(user=request.user)
 
     return render(request, 'activities/add_activity.html', {'form': form})

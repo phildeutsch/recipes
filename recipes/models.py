@@ -42,7 +42,7 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.dish.name + ': ' + self.name
-        
+
 class Guest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=128)
@@ -63,4 +63,4 @@ class Activity(models.Model):
         verbose_name_plural = "Activities"
 
     def __str__(self):
-        return self.id
+        return str(self.datetime) + ' ' + str(self.user)
