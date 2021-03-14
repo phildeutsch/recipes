@@ -27,6 +27,9 @@ urlpatterns = [
 
     path('', include('recipes.urls')),
 
+    # select2
+    path("select2/", include("django_select2.urls")),
+
     # Registration URLs
     path('accounts/register/',
         RegistrationView.as_view(

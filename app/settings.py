@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'recipes',
     'crispy_forms',
     'django_filters',
+    'django_select2',
     'django_registration',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -99,6 +100,8 @@ if ON_HEROKU:
     DB_PASSWORD = os.environ['DB_PASSWORD']
     DB_HOST = os.environ['DB_HOST']
     DB_PORT = os.environ['DB_PORT']
+    CACHE_URL = os.environ['REDIS_URL']
+
 else:
     if PROD:
         DB = 'DATABASE_PROD'
@@ -112,6 +115,11 @@ else:
     DB_HOST = config[DB]['DB_HOST']
     DB_PORT = config[DB]['DB_PORT']
 
+    CACHE_HOST = config['CACHE']['CACHE_HOST']
+    CACHE_PORT = config['CACHE']['CACHE_PORT']
+    CACHE_PW = config['CACHE']['CACHE_PW']
+    CACHE_URL = "redis://:"+CACHE_PW+"@"+CACHE_HOST+":"+CACHE_PORT
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -122,6 +130,22 @@ DATABASES = {
         'PORT': DB_PORT,
     }
 }
+
+# Caches
+CACHES = {
+    # … default cache config and others
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": CACHE_URL,
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+# Tell select2 which cache configuration to use:
+SELECT2_CACHE_BACKEND = "default"
+
 
 
 # Password validation

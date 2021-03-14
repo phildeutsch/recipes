@@ -22,3 +22,5 @@ whitenoise==5.0.1
 wincertstore==0.2
 django-crispy-forms==1.11.1
 django-filter==2.4.0
+django-select2==7.6.2
+django-redis==4.12.1
