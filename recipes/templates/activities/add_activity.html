@@ -2,6 +2,7 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load i18n %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <div class="col-md-4 ml-auto mr-auto">
     <div class="card card-white">
@@ -11,8 +12,11 @@
         <div class="card-body">
             <form method="POST" class="post-form" enctype="multipart/form-data"> 
                 {% csrf_token %}
+                {{ form.media.css }}
 
                 {{ form|crispy }}
+                
+                {{ form.media.js }}
 
                 <button type="submit" value="Submit" class="btn btn-primary">{% trans 'OK' %}</button>
                 <a class="btn btn-primary" href="/">{% trans 'Back' %}</a>
