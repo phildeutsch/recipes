@@ -14,10 +14,10 @@
 
     <br>
 
-    <a class="btn btn-primary" href="/recipes/dish/{{recipe.dish.id}}">{% trans 'Back' %}</a>
+    <a class="btn btn-primary" href="/dish/{{recipe.dish.id}}">{% trans 'Back' %}</a>
     {% if recipe.user == request.user %}
-        <a class="btn btn-warning" href="/recipes/delete_recipe/{{recipe.id}}">{% trans 'Delete recipe' %}</a>
-        <a class="btn btn-secondary" href="/recipes/edit_recipe/{{recipe.id}}">{% trans 'Edit recipe' %}</a>
+        <a class="btn btn-warning" href="/delete_recipe/{{recipe.id}}">{% trans 'Delete recipe' %}</a>
+        <a class="btn btn-secondary" href="/edit_recipe/{{recipe.id}}">{% trans 'Edit recipe' %}</a>
     {% endif %}
 </div>
 
