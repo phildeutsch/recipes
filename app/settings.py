@@ -18,9 +18,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'n0mxu*%4t(@kf0^8%n$ctv=^qjd($hr(bg$c4m$v4to(z(7r)5'
-
 # Flags for dev / production
 if 'ON_HEROKU' in os.environ:
     ON_HEROKU = True
@@ -102,6 +99,8 @@ if ON_HEROKU:
     DB_PORT = os.environ['DB_PORT']
     CACHE_URL = os.environ['REDIS_URL']
 
+    SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+
 else:
     if PROD:
         DB = 'DATABASE_PROD'
@@ -119,6 +118,9 @@ else:
     CACHE_PORT = config['CACHE']['CACHE_PORT']
     CACHE_PW = config['CACHE']['CACHE_PW']
     CACHE_URL = "redis://:"+CACHE_PW+"@"+CACHE_HOST+":"+CACHE_PORT
+
+    SECRET_KEY = config['DJANGO']['SECRET_KEY']
+
 
 DATABASES = {
     'default': {
