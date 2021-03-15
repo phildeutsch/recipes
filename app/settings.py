@@ -99,7 +99,7 @@ if ON_HEROKU:
     DB_PORT = os.environ['DB_PORT']
     CACHE_URL = os.environ['REDIS_URL']
 
-    SECRET_KEY = 'n0mxu*%4t(@kf0^8%n$ctv=^qjd($hr(bg$c4m$v4to(z(7r)5'
+    SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 else:
     if PROD:
