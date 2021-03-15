@@ -23,7 +23,9 @@ def create_user_profile(sender, instance, created, **kwargs):
      if created:
          Profile.objects.create(
              user=instance,
-             setting=1
+             language='en',
+             display_name=instance.username,
+             picture=None
              )
 @receiver(post_save, sender=User) 
 def save_user_profile(sender, instance, **kwargs):
