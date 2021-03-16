@@ -2,20 +2,23 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<div class="col-md-6 ml-auto mr-auto">
+<div class="col-md-6 mx-auto">
     <div class="card card-white">
         <div class="card-header">
             <h4 class="card-title">Profil bearbeiten</h4>
         </div>
 
         <div class="card-body">
-            <form method="POST" class="post-form" enctype="multipart/form-data"> 
+        <form method="POST" class="post-form" enctype="multipart/form-data"> 
                 {% csrf_token %}
                 {{ form | crispy }}
     
-                <button type="submit" class="btn btn-primary">OK</button>
-                <a class="btn btn-secondary" href="/profile">Zurück</a>
-            </form>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">OK</button>
+            <a class="btn btn-secondary" href="/profile">Zurück</a>
+        </form>
+        </div>
         </div>
     </div>
     {% if form.errors %}
