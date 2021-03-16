@@ -2,9 +2,8 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load i18n %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<div class="col-md-4 ml-auto mr-auto">
+<div class="col-md-4 mx-auto">
     <div class="card card-white">
         <div class="card-header">
             <h3 class="card-title">{% trans 'Add activity' %}</h3>
@@ -14,13 +13,24 @@
                 {% csrf_token %}
                 {{ form.media.css }}
 
-                {{ form|crispy }}
-                
-                {{ form.media.js }}
+                Date*
+                <div class="input-group date" data-provide="datepicker">
+                    <input type="text" name="datetime" class="datetimeinput form-control" required id="id_datetime">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>        
 
+                {{ form.recipes | as_crispy_field }}
+                {{ form.guests | as_crispy_field }}
+
+                {{ form.media.js }}
+            </div>
+            <div class="card-footer">
                 <button type="submit" value="Submit" class="btn btn-primary">{% trans 'OK' %}</button>
-                <a class="btn btn-primary" href="/">{% trans 'Back' %}</a>
+                <a class="btn btn-secondary" href="/">{% trans 'Back' %}</a>
             </form>
+        </div>
         </div>
     </div>
     {% if form.non_field_errors %}
@@ -31,5 +41,13 @@
     {% endfor %}
     {% endif %}
 </div>
+
+
+<script>
+    $('.datepicker').datepicker({
+    format: 'mm/dd/yyyy',
+    startDate: '-3d'
+});
+</script>
 
 {% endblock %}
