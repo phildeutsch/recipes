@@ -52,7 +52,7 @@ class Guest(models.Model):
         return self.name
 
 class Activity(models.Model):
-    datetime = models.DateTimeField()
+    date = models.DateField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recipes = models.ManyToManyField(Recipe)
 
