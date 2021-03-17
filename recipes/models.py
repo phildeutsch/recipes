@@ -63,4 +63,4 @@ class Activity(models.Model):
         verbose_name_plural = "Activities"
 
     def __str__(self):
-        return str(self.datetime) + ' ' + str(self.user)
+        return str(self.date) + ' ' + str(self.user)
