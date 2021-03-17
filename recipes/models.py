@@ -52,7 +52,7 @@ class Guest(models.Model):
         return self.name
 
 class Activity(models.Model):
-    datetime = models.DateTimeField()
+    date = models.DateField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recipes = models.ManyToManyField(Recipe)
 
@@ -63,4 +63,4 @@ class Activity(models.Model):
         verbose_name_plural = "Activities"
 
     def __str__(self):
-        return str(self.datetime) + ' ' + str(self.user)
+        return str(self.date) + ' ' + str(self.user)

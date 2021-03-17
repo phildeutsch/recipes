@@ -57,4 +57,3 @@ class ActivityForm(ModelForm):
         super(ActivityForm, self).__init__(*args, **kwargs)
         self.fields['guests'].queryset = Guest.objects.filter(user=user)
         self.fields['recipes'].queryset = Recipe.objects.filter(user=user)
-
