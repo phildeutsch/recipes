@@ -6,7 +6,7 @@
 {% if activities %}
     <div class="card-deck">
         {% for a in activities %}
-        <div class="card" style="width: 18rem;">
+        <div class="card mb-3 mx-auto" style="width: 18rem;">
             {% if a.picture %}
                 <img class="card-img-top" src={{a.picture.url}} width="256">
             {% endif %}                     
