@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.conf.urls.static import static
 
 from django_registration.backends.one_step.views import RegistrationView
@@ -29,6 +29,9 @@ urlpatterns = [
 
     # select2
     path("select2/", include("django_select2.urls")),
+
+    # comments
+    re_path(r'^comments/', include('django_comments.urls')),
 
     # Registration URLs
     path('accounts/register/',
