@@ -5,10 +5,6 @@
 {% block base %}
 <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top" aria-label="Second navbar example">
   <div class="container-fluid">
-    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button> -->
-
     <div class="collapse navbar-collapse" id="navbarsExample02">
       <ul class="navbar-nav me-auto mb-2 mb-sm-0">
         <li class="nav-item ps-2">
@@ -53,40 +49,6 @@
     </div>
   </div>
 </nav>
-
-<!-- <nav class="navbar navbar-dark bg-dark fixed-top">
-  <div class="collapse navbar-collapse">
-    <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-      <li class="nav-item">
-        {% if 'activities' in request.path%}
-          <a class="nav-link active" href="/activities">{% trans 'Activities' %}</a>
-        {% else %}
-          <a class="nav-link" href="/activities">{% trans 'Activities' %}</a>
-        {% endif %}
-      </li>
-      <li class="nav-item">
-        {% if 'recipe' in request.path or 'dish' in request.path %}
-          <a class="nav-link active" href="/dishes">{% trans 'Cook book' %}</a>
-        {% else %}
-          <a class="nav-link" href="/dishes">{% trans 'Cook book' %}</a>
-        {% endif %}
-      </li>
-      <li class="nav-item">
-        {% if 'guests' in request.path %}
-          <a class="nav-link active" href="/guests">{% trans 'Guests' %}</a>
-        {% else %}
-          <a class="nav-link" href="/guests">{% trans 'Guests' %}</a>
-        {% endif %}
-        </li>
-    </ul>
-    <ul class="navbar-nav ms-auto">
-      <li><a class="btn btn-primary" href="/add_activity">{% trans 'Add activity' %}</a></li>
-      <li><a class="nav-link ps-4" href="/accounts/logout"><i class="fas fa-sign-out-alt fa-fw"></i> {% trans 'Log out' %}</a></li>
-      <li><a class="nav-link ps-4" href="/profile"><i class="fas fa-cog fa-fw"></i> {% trans 'Settings' %}</a></li>
-    </ul>
-  </div>
-</nav> -->
-
 <div class="container-fluid">
 
   {% block content %}

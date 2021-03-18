@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-11 16:53+0000\n"
-"PO-Revision-Date: 2021-03-11 16:54+0000\n"
+"POT-Creation-Date: 2021-03-18 13:28+0000\n"
+"PO-Revision-Date: 2021-03-18 13:29+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -73,27 +73,25 @@ msgstr "Zurück zur Anmeldung"
 msgid "Log in"
 msgstr "Anmelden"
 
-#: .\app\templates\base.html:15 .\app\templates\base.html:17
-#: .\recipes\templates\activities\activities.html:8
+#: .\app\templates\base.html:12 .\app\templates\base.html:15
 msgid "Activities"
 msgstr "Aktivitäten"
 
-#: .\app\templates\base.html:22 .\app\templates\base.html:24
-#: .\recipes\forms.py:36
-msgid "Recipes"
-msgstr "Rezepte"
+#: .\app\templates\base.html:21 .\app\templates\base.html:24
+msgid "Cook book"
+msgstr "Kochbuch"
 
-#: .\app\templates\base.html:29 .\app\templates\base.html:31
-#: .\recipes\templates\users\users.html:8
-msgid "Cooks"
-msgstr "Köche"
-
-#: .\app\templates\base.html:36 .\app\templates\base.html:38
-#: .\recipes\forms.py:37 .\recipes\templates\guests\guests.html:8
+#: .\app\templates\base.html:31 .\app\templates\base.html:34
+#: .\recipes\forms.py:48 .\recipes\templates\guests\guests.html:8
 msgid "Guests"
 msgstr "Gäste"
 
-#: .\app\templates\base.html:45
+#: .\app\templates\base.html:40
+#: .\recipes\templates\activities\add_activity.html:11
+msgid "Add activity"
+msgstr "Aktivität hinzufügen"
+
+#: .\app\templates\base.html:43
 msgid "Log out"
 msgstr "Abmelden"
 
@@ -101,82 +99,89 @@ msgstr "Abmelden"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: .\recipes\forms.py:11 .\recipes\forms.py:27
+#: .\app\templates\base_head.html:9
+msgid "Rezeptothek"
+msgstr "Rezeptothek"
+
+#: .\recipes\forms.py:12 .\recipes\forms.py:28
 #: .\recipes\templates\guests\guests.html:16
 #: .\recipes\templates\recipes\recipes.html:24
-#: .\recipes\templates\users\users.html:16
 msgid "Name"
 msgstr "Name"
 
-#: .\recipes\forms.py:12 .\recipes\templates\recipes\dishes.html:17
+#: .\recipes\forms.py:13 .\recipes\templates\recipes\dishes.html:33
 msgid "Course"
 msgstr "Gang"
 
-#: .\recipes\forms.py:13 .\recipes\templates\recipes\dishes.html:18
+#: .\recipes\forms.py:14 .\recipes\templates\recipes\dishes.html:34
 msgid "Cuisine"
 msgstr "Region"
 
-#: .\recipes\forms.py:28
+#: .\recipes\forms.py:29
 msgid "Note"
 msgstr "Notiz"
 
-#: .\recipes\forms.py:38
+#: .\recipes\forms.py:47
+msgid "Recipes"
+msgstr "Rezepte"
+
+#: .\recipes\forms.py:49
 msgid "Picture"
 msgstr "Bild"
 
-#: .\recipes\models.py:11
+#: .\recipes\models.py:12
 msgid "First course"
 msgstr "Vorspeise"
 
-#: .\recipes\models.py:12
+#: .\recipes\models.py:13
 msgid "Main course"
 msgstr "Hauptspeise"
 
-#: .\recipes\models.py:13
+#: .\recipes\models.py:14
 msgid "Dessert"
 msgstr "Nachspeise"
 
-#: .\recipes\models.py:14
+#: .\recipes\models.py:15
 msgid "Cocktail"
 msgstr "Cocktail"
 
-#: .\recipes\models.py:18
+#: .\recipes\models.py:17
 msgid "Austrian"
 msgstr "Österreichisch"
 
-#: .\recipes\models.py:19
+#: .\recipes\models.py:18
 msgid "British"
 msgstr "Britisch"
 
-#: .\recipes\models.py:20
+#: .\recipes\models.py:19
 msgid "Italian"
 msgstr "Italienisch"
 
 #: .\recipes\templates\activities\activities.html:16
-msgid "Time"
-msgstr "Zeit"
+msgid "View details"
+msgstr "Details anzeigen"
 
-#: .\recipes\templates\activities\activities.html:32
+#: .\recipes\templates\activities\activities.html:22
 msgid "No activities"
 msgstr "Keine Aktivitäten"
 
-#: .\recipes\templates\activities\activities.html:37
-#: .\recipes\templates\activities\add_activity.html:9
-msgid "Add activity"
-msgstr "Aktivität hinzufügen"
+#: .\recipes\templates\activities\add_activity.html:21
+msgid "Date"
+msgstr "Datum"
 
-#: .\recipes\templates\activities\add_activity.html:17
+#: .\recipes\templates\activities\add_activity.html:42
 #: .\recipes\templates\guests\add_guest.html:17
 #: .\recipes\templates\recipes\add_dish.html:17
-#: .\recipes\templates\recipes\edit_dish.html:17
+#: .\recipes\templates\recipes\dishes.html:17
+#: .\recipes\templates\recipes\edit_dish.html:19
 #: .\recipes\templates\recipes\edit_recipe.html:35
 msgid "OK"
 msgstr "OK"
 
-#: .\recipes\templates\activities\add_activity.html:18
+#: .\recipes\templates\activities\add_activity.html:43
 #: .\recipes\templates\guests\add_guest.html:18
 #: .\recipes\templates\recipes\add_dish.html:18
-#: .\recipes\templates\recipes\edit_dish.html:18
+#: .\recipes\templates\recipes\edit_dish.html:21
 #: .\recipes\templates\recipes\edit_recipe.html:36
 #: .\recipes\templates\recipes\recipe.html:17
 msgid "Back"
@@ -192,7 +197,7 @@ msgid "No guests set up"
 msgstr "Keine Gäste vorhanden"
 
 #: .\recipes\templates\recipes\add_dish.html:9
-#: .\recipes\templates\recipes\dishes.html:47
+#: .\recipes\templates\recipes\dishes.html:66
 msgid "Add dish"
 msgstr "Gericht hinzufügen"
 
@@ -220,19 +225,23 @@ msgstr "Methode"
 msgid "Servings"
 msgstr "Portionen"
 
-#: .\recipes\templates\recipes\dishes.html:8
+#: .\recipes\templates\recipes\dishes.html:25
 msgid "Dishes"
 msgstr "Gerichte"
 
-#: .\recipes\templates\recipes\dishes.html:16
+#: .\recipes\templates\recipes\dishes.html:32
 msgid "Dish"
 msgstr "Gericht"
+
+#: .\recipes\templates\recipes\dishes.html:35
+msgid "Total Recipes"
+msgstr "Rezepte"
 
 #: .\recipes\templates\recipes\edit_dish.html:9
 msgid "Edit dish"
 msgstr "Gericht bearbeiten"
 
-#: .\recipes\templates\recipes\edit_dish.html:19
+#: .\recipes\templates\recipes\edit_dish.html:22
 msgid "Delete"
 msgstr "Löschen"
 
@@ -272,3 +281,9 @@ msgstr "Erstellt"
 #: .\recipes\templates\recipes\recipes.html:44
 msgid "New recipe"
 msgstr "Neues Rezept"
+
+#~ msgid "Cooks"
+#~ msgstr "Köche"
+
+#~ msgid "Time"
+#~ msgstr "Zeit"

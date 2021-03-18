@@ -18,7 +18,7 @@
                 <!-- Datepicker -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" integrity="sha512-TQQ3J4WkE/rwojNFo6OJdyu6G8Xe9z8rMrlF9y7xpFbQfW5g8aSWcygCQ4vqRiJqFsDsE1T6MoAOMJkFXlrI9A==" crossorigin="anonymous" />
                 
-                Date*
+                {% trans 'Date' %}*
                 <div id="dateinput" class="input-group date" data-provide="datepicker">
                     <input  type="text" name="date" class="form-control" data-date-format="yyyy-mm-dd">
                     <div class="input-group-addon">
@@ -34,6 +34,7 @@
 
                 {{ form.recipes | as_crispy_field }}
                 {{ form.guests | as_crispy_field }}
+                {{ form.picture | as_crispy_field }}
                 
                 {{ form.media.js }}
             </div>
@@ -46,7 +47,6 @@
     
     {% if form.errors %}
     <div id="form-error">
-        <p>The operation could not be performed because one or more error(s) occurred.<br />Please resubmit the form after making the following changes:</p>
         <ul>
         {% for field in form %}
         <li>{{field.name }}: {{ field.errors|striptags }}</li>
