@@ -4,7 +4,22 @@
 
 <div class="row">
     <div class="col-lg-6">
-        {% include "recipes/cards/recipe.html" %}
+        <div class="card">
+            <div class="card-header">
+               {{ dish.name }} {{ recipe.name }}
+            </div>
+            <div class="card-body">
+                <p>{% trans 'Servings' %}: {{ recipe.servings }} </p>
+                <h5>{% trans 'Ingredients' %}: <small>(für {{ recipe.servings }} Portionen)</small></h5>
+                <p> {{ recipe.ingredients | linebreaks }} </p>
+                <h5>{% trans 'Method' %}:</h5>
+                <p> {{ recipe.text | linebreaks }} </p>
+            </div>
+            <div class="card-footer">
+                <!-- <a class="btn btn-warning" href="/delete_recipe/{{recipe.id}}">Delete recipe</a>
+                <a class="btn btn-primary" href="/edit_recipe/{{recipe.id}}">Rezept bearbeiten</a> -->
+            </div>
+        </div>
     </div>
     <div class="col-lg-6">
         <div class="card">

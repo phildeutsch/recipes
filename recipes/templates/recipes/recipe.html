@@ -8,12 +8,24 @@
     <br>
 
     <div class="card-deck">
-        {% include "recipes/cards/ingredients.html" %}
-        {% include "recipes/cards/instructions.html" %}
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5>{% trans 'Ingredients' %} <small>({% trans 'for' %} {{ recipe.servings }} {% trans 'servings' %})</small></h5>
+            </div>
+            <div class="card-body">
+                <p> {{ recipe.ingredients | linebreaks }} </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h5>{% trans 'Method' %}</h5>
+            </div>
+            <div class="card-body">
+                <p> {{ recipe.text | linebreaks }} </p>
+            </div>
+        </div>
     </div>
-
     <br>
-
     <a class="btn btn-primary" href="/dish/{{recipe.dish.id}}">{% trans 'Back' %}</a>
     {% if recipe.user == request.user %}
         <a class="btn btn-warning" href="/delete_recipe/{{recipe.id}}">{% trans 'Delete recipe' %}</a>

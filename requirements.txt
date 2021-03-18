@@ -24,3 +24,4 @@ django-crispy-forms==1.11.1
 django-filter==2.4.0
 django-select2==7.6.2
 django-redis==4.12.1
+django-simple-history==2.12.0
