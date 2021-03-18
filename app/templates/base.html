@@ -3,20 +3,60 @@
 {% load i18n %}
 
 {% block base %}
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="navbar navbar-expand navbar-dark bg-dark fixed-top" aria-label="Second navbar example">
+  <div class="container-fluid">
+    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
 
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-      <!-- <li class="nav-item">
-        {% if request.path == '/dashboard' %}
-          <a class="nav-link active" href="/dashboard">{% trans 'Dashboard' %}</a>
+    <div class="collapse navbar-collapse" id="navbarsExample02">
+      <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+        <li class="nav-item ps-2">
+          {% if 'activities' in request.path%}
+          <a class="nav-link d-none d-lg-block active" href="/activities">{% trans 'Activities' %}</a>
+          <a class="nav-link d-lg-none active" href="/activities"><i class="far fa-calendar-alt"></i></a>
         {% else %}
-          <a class="nav-link" href="/dashboard">{% trans 'Dashboard' %}</a>
-        {% endif %}
-      </li> -->
+            <a class="nav-link d-none d-lg-block" href="/activities">{% trans 'Activities' %}</a>
+            <a class="nav-link d-lg-none" href="/activities"><i class="far fa-calendar-alt"></i></a>
+          {% endif %}
+        </li>
+        <li class="nav-item ps-2">
+          {% if 'recipe' in request.path or 'dish' in request.path %}
+          <a class="nav-link d-none d-lg-block active" href="/dishes">{% trans 'Cook book' %}</a>
+          <a class="nav-link d-lg-none active" href="/dishes"><i class="fas fa-book"></i></a>
+        {% else %}
+            <a class="nav-link d-none d-lg-block" href="/dishes">{% trans 'Cook book' %}</a>
+            <a class="nav-link d-lg-none" href="/dishes"><i class="fas fa-book"></i></a>
+
+          {% endif %}
+        </li>
+        <li class="nav-item ps-2">
+          {% if 'guests' in request.path %}
+          <a class="nav-link d-none d-lg-block active" href="/guests">{% trans 'Guests' %}</a>
+          <a class="nav-link d-lg-none active" href="/guests"><i class="fas fa-user-friends"></i></a>
+        {% else %}
+            <a class="nav-link d-none d-lg-block" href="/guests">{% trans 'Guests' %}</a>
+            <a class="nav-link d-lg-none" href="/guests"><i class="fas fa-user-friends"></i></a>
+          {% endif %}
+          </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-sm-0">
+        <li class="nav-item ps-2"><a class="nav-link d-none d-lg-block" href="/add_activity">{% trans 'Add activity' %}</a></li>
+        <li class="nav-item ps-2"><a class="nav-link d-lg-none" href="/add_activity"><i class="far fa-calendar-plus"></i></a></li>
+
+        <li class="nav-item ps-2"><a class="nav-link d-none d-lg-block" href="/accounts/logout"><i class="fas fa-sign-out-alt fa-fw"></i>{% trans 'Log out' %}</a></li>
+        <li class="nav-item ps-2"><a class="nav-link d-lg-none" href="/accounts/logout"><i class="fas fa-sign-out-alt fa-fw"></i></a></li>
+
+        <li class="nav-item ps-2"><a class="nav-link d-none d-lg-block" href="/profile"><i class="fas fa-cog fa-fw"></i> {% trans 'Settings' %}</a></li>
+        <li class="nav-item ps-2"><a class="nav-link d-lg-none" href="/profile"><i class="fas fa-cog fa-fw"></i></a></li>
+      </ul>  
+    </div>
+  </div>
+</nav>
+
+<!-- <nav class="navbar navbar-dark bg-dark fixed-top">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav me-auto mb-2 mb-sm-0">
       <li class="nav-item">
         {% if 'activities' in request.path%}
           <a class="nav-link active" href="/activities">{% trans 'Activities' %}</a>
@@ -45,14 +85,14 @@
       <li><a class="nav-link ps-4" href="/profile"><i class="fas fa-cog fa-fw"></i> {% trans 'Settings' %}</a></li>
     </ul>
   </div>
-</nav>
+</nav> -->
 
-<main role="main" class="container-fluid">
+<div class="container-fluid">
 
   {% block content %}
   {% endblock %}
           
-</main><!-- /.container -->
+</div><!-- /.container -->
 
 </html>
 {% endblock %}
