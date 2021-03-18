@@ -1,9 +1,8 @@
 import django_filters
 from .models import Dish
+from django.utils.translation import ugettext_lazy as _
 
 class DishFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(lookup_expr='icontains')
-
-    class Meta:
-        model = Dish
-        fields = ['course', 'cuisine']
+    course = django_filters.ChoiceFilter(choices=Dish.DISH_COURSE_CHOICES, label=_("Course"))
+    cuisine = django_filters.ChoiceFilter(choices=Dish.DISH_CUISINE_CHOICES, label=_("Cuisine"))

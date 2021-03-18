@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-18 17:33+0000\n"
-"PO-Revision-Date: 2021-03-18 17:33+0000\n"
+"PO-Revision-Date: 2021-03-18 17:58+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -115,7 +115,7 @@ msgstr "Gang"
 
 #: .\recipes\forms.py:14 .\recipes\templates\recipes\dishes.html:34
 msgid "Cuisine"
-msgstr "Region"
+msgstr "Küche"
 
 #: .\recipes\forms.py:29
 msgid "Note"
