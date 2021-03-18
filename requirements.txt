@@ -25,3 +25,4 @@ django-filter==2.4.0
 django-select2==7.6.2
 django-redis==4.12.1
 django-simple-history==2.12.0
+django-contrib-comments==2.1.0

@@ -49,9 +49,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'debug_toolbar',
-    'storages',
+    'django_comments',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -150,7 +152,7 @@ CACHES = {
 # Tell select2 which cache configuration to use:
 SELECT2_CACHE_BACKEND = "default"
 
-
+SITE_ID = 1
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

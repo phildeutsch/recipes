@@ -1,36 +1,73 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load i18n %}
+{% load comments %}
+{% load crispy_forms_tags %}
 
 <div class="container-fluid">
-    <h3>{{ recipe.dish.name }}: {{ recipe.name }} {% trans 'by' %} {{recipe.user.username}} </h3>
+    <div class="row">
+        <div class="col-6">
+            <h5>{{ recipe.dish.name }}: {{ recipe.name }} {% trans 'by' %} {{recipe.user.profile.display_name}} </h5>
+        </div>
+        <div class="col-6 text-end">    
+            {% if recipe.user == request.user %}
+                <!-- <a class="btn btn-warning" href="/delete_recipe/{{recipe.id}}">{% trans 'Delete recipe' %}</a> -->
+                <a class="btn btn-secondary" href="/edit_recipe/{{recipe.id}}">{% trans 'Edit' %}</a>
+            {% endif %}
+            <a class="btn btn-secondary" href="/dish/{{recipe.dish.id}}">{% trans 'Back' %}</a>
+        </div>
+    </div>
     
-    <br>
-
-    <div class="card-deck">
-        <div class="card mb-3">
-            <div class="card-header">
-                <h5>{% trans 'Ingredients' %} <small>({% trans 'for' %} {{ recipe.servings }} {% trans 'servings' %})</small></h5>
-            </div>
-            <div class="card-body">
-                <p> {{ recipe.ingredients | linebreaks }} </p>
+    <div class="row">
+        <div class="col-md-6 align-items-stretch mb-3">
+            <div class="card mb-3 h-100">
+                <div class="card-header">
+                    <h5>{% trans 'Ingredients' %} <small>({% trans 'for' %} {{ recipe.servings }} {% trans 'servings' %})</small></h5>
+                </div>
+                <div class="card-body">
+                    <p> {{ recipe.ingredients | linebreaks }} </p>
+                </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header">
-                <h5>{% trans 'Method' %}</h5>
-            </div>
-            <div class="card-body">
-                <p> {{ recipe.text | linebreaks }} </p>
+        <div class="col-md-6 align-items-stretch mb-3">
+            <div class="card mb-3 h-100">
+                <div class="card-header">
+                    <h5>{% trans 'Method' %}</h5>
+                </div>
+                <div class="card-body">
+                    <p> {{ recipe.text | linebreaks }} </p>
+                </div>
             </div>
         </div>
     </div>
-    <br>
-    <a class="btn btn-primary" href="/dish/{{recipe.dish.id}}">{% trans 'Back' %}</a>
-    {% if recipe.user == request.user %}
-        <a class="btn btn-warning" href="/delete_recipe/{{recipe.id}}">{% trans 'Delete recipe' %}</a>
-        <a class="btn btn-secondary" href="/edit_recipe/{{recipe.id}}">{% trans 'Edit recipe' %}</a>
-    {% endif %}
+    <div class="row">
+        <div class="col-md-6 align-items-stretch mb-3">
+            <div class="card mb-3 h-100">
+                <div class="card-body">
+                    {% render_comment_list for recipe %}
+
+                    {% get_comment_form for recipe as form %}
+                    <form action="{% comment_form_target %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.comment | as_crispy_field }}
+                    {{ form.honeypot }}
+                    {{ form.content_type }}
+                    {{ form.object_pk }}
+                    {{ form.timestamp }}
+                    {{ form.security_hash }}
+                    <input type="hidden" name="next" value="/recipe/{{recipe.id}}" />
+                    <input type="submit" value="{% trans 'Add comment' %}" id="id_submit" />
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 align-items-stretch mb-3">
+            <div class="card mb-3 h-100">
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
