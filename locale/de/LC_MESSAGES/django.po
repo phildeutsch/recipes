@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-18 17:15+0000\n"
-"PO-Revision-Date: 2021-03-18 17:15+0000\n"
+"POT-Creation-Date: 2021-03-18 17:33+0000\n"
+"PO-Revision-Date: 2021-03-18 17:33+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -157,6 +157,10 @@ msgstr "Britisch"
 msgid "Italian"
 msgstr "Italienisch"
 
+#: .\recipes\models.py:21
+msgid "American"
+msgstr "Amerikanisch"
+
 #: .\recipes\templates\activities\activities.html:16
 msgid "View details"
 msgstr "Details anzeigen"
@@ -197,7 +201,7 @@ msgid "No guests set up"
 msgstr "Keine Gäste vorhanden"
 
 #: .\recipes\templates\recipes\add_dish.html:9
-#: .\recipes\templates\recipes\dishes.html:66
+#: .\recipes\templates\recipes\dishes.html:65
 msgid "Add dish"
 msgstr "Gericht hinzufügen"
 
