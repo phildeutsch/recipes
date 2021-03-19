@@ -9,10 +9,19 @@ class User(AbstractUser):
     pass
 
 class Profile(models.Model):
+    PROFILE_PRIVACY_CHOICES = [
+        (1, _('Everyone')),
+        (2, _('Followers')),
+        (3, _('Only you')),
+    ]
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     language = models.CharField(max_length=2, default='en', choices=(('en', _('English')), ('de', _('German'))))
     display_name = models.CharField(max_length=128, null=True, blank=True)
     picture = models.ImageField(null=True, blank=True, upload_to=RandomFileName('profiles'))
+
+    privacy_recipes = models.IntegerField(choices=PROFILE_PRIVACY_CHOICES, blank=True, null=True)
+    privacy_activities = models.IntegerField(choices=PROFILE_PRIVACY_CHOICES, blank=True, null=True)
 
     def __str__(self):
         return self.user.username
@@ -25,7 +34,9 @@ def create_user_profile(sender, instance, created, **kwargs):
              user=instance,
              language='en',
              display_name=instance.username,
-             picture=None
+             picture=None,
+             privacy_recipes=1,
+             privacy_activities=1
              )
 @receiver(post_save, sender=User) 
 def save_user_profile(sender, instance, **kwargs):
