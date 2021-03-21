@@ -120,7 +120,7 @@ def edit_recipe(request, recipe_id):
     if request.method == "POST":
         form = RecipeForm(request.POST, instance=recipe)
         if form.is_valid():
-            post = form.save(commit=False)
+            post = form.save()
             return redirect('/recipe/' + str(recipe.id))
     else:
         form = DishForm(instance=recipe)
