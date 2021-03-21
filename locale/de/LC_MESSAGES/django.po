@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-18 17:33+0000\n"
-"PO-Revision-Date: 2021-03-18 17:58+0000\n"
+"POT-Creation-Date: 2021-03-19 17:47+0000\n"
+"PO-Revision-Date: 2021-03-19 17:48+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -19,11 +19,43 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "X-Poedit-Bookmarks: -1,21,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
+#: .\accounts\forms.py:16 .\accounts\templates\accounts\profile.html:14
+msgid "Language"
+msgstr "Sprache"
+
+#: .\accounts\forms.py:17
+msgid "Display Name"
+msgstr "Angezeigter Name"
+
+#: .\accounts\forms.py:18 .\recipes\forms.py:49
+msgid "Picture"
+msgstr "Bild"
+
+#: .\accounts\forms.py:19
+msgid "Privacy Recipes"
+msgstr "Privatsphäre Rezepte"
+
+#: .\accounts\forms.py:20
+msgid "Privacy Activities"
+msgstr "Privatsphäre Aktivitäten"
+
 #: .\accounts\models.py:13
+msgid "Everyone"
+msgstr "Alle"
+
+#: .\accounts\models.py:14
+msgid "Followers"
+msgstr "Follower"
+
+#: .\accounts\models.py:15
+msgid "Only you"
+msgstr "Nur du"
+
+#: .\accounts\models.py:19
 msgid "English"
 msgstr "Englisch"
 
-#: .\accounts\models.py:13
+#: .\accounts\models.py:19
 msgid "German"
 msgstr "Deutsch"
 
@@ -40,11 +72,15 @@ msgstr "Benutzername"
 msgid "Display name"
 msgstr "Angezeigter Name"
 
-#: .\accounts\templates\accounts\profile.html:14
-msgid "Language"
-msgstr "Sprache"
+#: .\accounts\templates\accounts\profile.html:15
+msgid "Who should be able to see your recipes?"
+msgstr "Wer doll deine Rezepte sehen können?"
 
-#: .\accounts\templates\accounts\profile.html:17
+#: .\accounts\templates\accounts\profile.html:16
+msgid "Who should be able to see your activities?"
+msgstr "Wer doll deine Aktivitäten sehen können?"
+
+#: .\accounts\templates\accounts\profile.html:19
 msgid "Edit profile"
 msgstr "Profil bearbeiten"
 
@@ -103,19 +139,21 @@ msgstr "Einstellungen"
 msgid "Rezeptothek"
 msgstr "Rezeptothek"
 
+#: .\recipes\filters.py:7 .\recipes\forms.py:13
+#: .\recipes\templates\recipes\dishes.html:33
+msgid "Course"
+msgstr "Gang"
+
+#: .\recipes\filters.py:8 .\recipes\forms.py:14
+#: .\recipes\templates\recipes\dishes.html:34
+msgid "Cuisine"
+msgstr "Küche"
+
 #: .\recipes\forms.py:12 .\recipes\forms.py:28
 #: .\recipes\templates\guests\guests.html:16
 #: .\recipes\templates\recipes\recipes.html:24
 msgid "Name"
 msgstr "Name"
-
-#: .\recipes\forms.py:13 .\recipes\templates\recipes\dishes.html:33
-msgid "Course"
-msgstr "Gang"
-
-#: .\recipes\forms.py:14 .\recipes\templates\recipes\dishes.html:34
-msgid "Cuisine"
-msgstr "Küche"
 
 #: .\recipes\forms.py:29
 msgid "Note"
@@ -124,10 +162,6 @@ msgstr "Notiz"
 #: .\recipes\forms.py:47
 msgid "Recipes"
 msgstr "Rezepte"
-
-#: .\recipes\forms.py:49
-msgid "Picture"
-msgstr "Bild"
 
 #: .\recipes\models.py:13
 msgid "First course"

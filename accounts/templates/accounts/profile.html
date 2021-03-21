@@ -12,6 +12,8 @@
             <p>{% trans 'Username'%}: {{p.user.username}}</p>
             <p>{% trans 'Display name'%}: {{p.display_name}}</p>
             <p>{% trans 'Language'%}: {{p.language}}</p>
+            <p>{% trans 'Who should be able to see your recipes?'%}: {{p.get_privacy_recipes_display}}</p>
+            <p>{% trans 'Who should be able to see your activities?'%}: {{p.get_privacy_activities_display}}</p>
         </div>
         <div class="card-footer">
             <a class="btn btn-primary" href="/edit_profile">{% trans 'Edit profile' %}</a>
