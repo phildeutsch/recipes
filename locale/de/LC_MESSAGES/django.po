@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-19 17:47+0000\n"
-"PO-Revision-Date: 2021-03-19 17:48+0000\n"
+"POT-Creation-Date: 2021-03-21 18:00+0000\n"
+"PO-Revision-Date: 2021-03-21 18:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -27,7 +27,7 @@ msgstr "Sprache"
 msgid "Display Name"
 msgstr "Angezeigter Name"
 
-#: .\accounts\forms.py:18 .\recipes\forms.py:49
+#: .\accounts\forms.py:18 .\recipes\forms.py:31 .\recipes\forms.py:61
 msgid "Picture"
 msgstr "Bild"
 
@@ -118,7 +118,7 @@ msgid "Cook book"
 msgstr "Kochbuch"
 
 #: .\app\templates\base.html:31 .\app\templates\base.html:34
-#: .\recipes\forms.py:48 .\recipes\templates\guests\guests.html:8
+#: .\recipes\forms.py:60 .\recipes\templates\guests\guests.html:8
 msgid "Guests"
 msgstr "Gäste"
 
@@ -139,59 +139,86 @@ msgstr "Einstellungen"
 msgid "Rezeptothek"
 msgstr "Rezeptothek"
 
-#: .\recipes\filters.py:7 .\recipes\forms.py:13
+#: .\recipes\filters.py:7 .\recipes\forms.py:13 .\recipes\forms.py:26
 #: .\recipes\templates\recipes\dishes.html:33
+#: .\recipes\templates\recipes\recipes.html:41
 msgid "Course"
 msgstr "Gang"
 
-#: .\recipes\filters.py:8 .\recipes\forms.py:14
+#: .\recipes\filters.py:8 .\recipes\forms.py:14 .\recipes\forms.py:27
 #: .\recipes\templates\recipes\dishes.html:34
 msgid "Cuisine"
 msgstr "Küche"
 
-#: .\recipes\forms.py:12 .\recipes\forms.py:28
+#: .\recipes\forms.py:12 .\recipes\forms.py:22 .\recipes\forms.py:40
 #: .\recipes\templates\guests\guests.html:16
-#: .\recipes\templates\recipes\recipes.html:24
+#: .\recipes\templates\recipes\dish_recipes.html:24
 msgid "Name"
 msgstr "Name"
 
+#: .\recipes\forms.py:23 .\recipes\templates\recipes\edit_recipe.html:13
+msgid "Servings"
+msgstr "Portionen"
+
+#: .\recipes\forms.py:24 .\recipes\templates\recipes\edit_recipe.html:14
+#: .\recipes\templates\recipes\recipe.html:25
+msgid "Ingredients"
+msgstr "Zutaten"
+
+#: .\recipes\forms.py:25 .\recipes\templates\recipes\edit_recipe.html:16
+#: .\recipes\templates\recipes\recipe.html:35
+msgid "Method"
+msgstr "Methode"
+
+#: .\recipes\forms.py:28
+msgid "Vegetarian"
+msgstr "Vegetarisch"
+
 #: .\recipes\forms.py:29
+msgid "Meat"
+msgstr "Fleisch"
+
+#: .\recipes\forms.py:30
+msgid "Fish"
+msgstr "Fisch"
+
+#: .\recipes\forms.py:41
 msgid "Note"
 msgstr "Notiz"
 
-#: .\recipes\forms.py:47
+#: .\recipes\forms.py:59 .\recipes\templates\recipes\recipes.html:27
 msgid "Recipes"
 msgstr "Rezepte"
 
-#: .\recipes\models.py:13
+#: .\recipes\models.py:13 .\recipes\models.py:37
 msgid "First course"
 msgstr "Vorspeise"
 
-#: .\recipes\models.py:14
+#: .\recipes\models.py:14 .\recipes\models.py:38
 msgid "Main course"
 msgstr "Hauptspeise"
 
-#: .\recipes\models.py:15
+#: .\recipes\models.py:15 .\recipes\models.py:39
 msgid "Dessert"
 msgstr "Nachspeise"
 
-#: .\recipes\models.py:16
+#: .\recipes\models.py:16 .\recipes\models.py:40
 msgid "Cocktail"
 msgstr "Cocktail"
 
-#: .\recipes\models.py:18
+#: .\recipes\models.py:18 .\recipes\models.py:42
 msgid "Austrian"
 msgstr "Österreichisch"
 
-#: .\recipes\models.py:19
+#: .\recipes\models.py:19 .\recipes\models.py:43
 msgid "British"
 msgstr "Britisch"
 
-#: .\recipes\models.py:20
+#: .\recipes\models.py:20 .\recipes\models.py:44
 msgid "Italian"
 msgstr "Italienisch"
 
-#: .\recipes\models.py:21
+#: .\recipes\models.py:21 .\recipes\models.py:45
 msgid "American"
 msgstr "Amerikanisch"
 
@@ -210,17 +237,20 @@ msgstr "Datum"
 #: .\recipes\templates\activities\add_activity.html:42
 #: .\recipes\templates\guests\add_guest.html:17
 #: .\recipes\templates\recipes\add_dish.html:17
+#: .\recipes\templates\recipes\add_recipe.html:18
 #: .\recipes\templates\recipes\dishes.html:17
 #: .\recipes\templates\recipes\edit_dish.html:19
-#: .\recipes\templates\recipes\edit_recipe.html:50
+#: .\recipes\templates\recipes\edit_recipe.html:37
+#: .\recipes\templates\recipes\recipes.html:17
 msgid "OK"
 msgstr "OK"
 
 #: .\recipes\templates\activities\add_activity.html:43
 #: .\recipes\templates\guests\add_guest.html:18
 #: .\recipes\templates\recipes\add_dish.html:18
+#: .\recipes\templates\recipes\add_recipe.html:19
 #: .\recipes\templates\recipes\edit_dish.html:21
-#: .\recipes\templates\recipes\edit_recipe.html:51
+#: .\recipes\templates\recipes\edit_recipe.html:38
 #: .\recipes\templates\recipes\recipe.html:17
 msgid "Back"
 msgstr "Zurück"
@@ -239,7 +269,31 @@ msgstr "Keine Gäste vorhanden"
 msgid "Add dish"
 msgstr "Gericht hinzufügen"
 
+#: .\recipes\templates\recipes\add_recipe.html:9
+#: .\recipes\templates\recipes\recipes.html:30
+msgid "Add recipe"
+msgstr "Rezept hinzufügen"
+
+#: .\recipes\templates\recipes\dish_recipes.html:10
+msgid "Recipes for"
+msgstr "Rezepte für"
+
+#: .\recipes\templates\recipes\dish_recipes.html:23
+#: .\recipes\templates\recipes\recipes.html:40
+msgid "Cook"
+msgstr "Koch"
+
+#: .\recipes\templates\recipes\dish_recipes.html:25
+msgid "Created"
+msgstr "Erstellt"
+
+#: .\recipes\templates\recipes\dish_recipes.html:44
+#: .\recipes\templates\recipes\recipes.html:79
+msgid "New recipe"
+msgstr "Neues Rezept"
+
 #: .\recipes\templates\recipes\dishes.html:10
+#: .\recipes\templates\recipes\recipes.html:10
 msgid "Search"
 msgstr "Suche"
 
@@ -263,33 +317,9 @@ msgstr "Gericht bearbeiten"
 msgid "Delete"
 msgstr "Löschen"
 
-#: .\recipes\templates\recipes\edit_recipe.html:12
-msgid "Servings"
-msgstr "Portionen"
-
-#: .\recipes\templates\recipes\edit_recipe.html:13
-#: .\recipes\templates\recipes\edit_recipe.html:41
-#: .\recipes\templates\recipes\recipe.html:25
-msgid "Ingredients"
-msgstr "Zutaten"
-
-#: .\recipes\templates\recipes\edit_recipe.html:15
-#: .\recipes\templates\recipes\edit_recipe.html:45
-#: .\recipes\templates\recipes\recipe.html:35
-msgid "Method"
-msgstr "Methode"
-
-#: .\recipes\templates\recipes\edit_recipe.html:27
+#: .\recipes\templates\recipes\edit_recipe.html:28
 msgid "Edit recipe"
 msgstr "Rezept bearbeiten"
-
-#: .\recipes\templates\recipes\edit_recipe.html:33
-msgid "Recipe name"
-msgstr "Rezeptname"
-
-#: .\recipes\templates\recipes\edit_recipe.html:37
-msgid "Portions"
-msgstr "Portionen"
 
 #: .\recipes\templates\recipes\recipe.html:10
 msgid "by"
@@ -315,21 +345,24 @@ msgstr "Portionen"
 msgid "Add comment"
 msgstr "Kommentar hinzufügen"
 
-#: .\recipes\templates\recipes\recipes.html:10
-msgid "Recipes for"
-msgstr "Rezepte für"
+#: .\recipes\templates\recipes\recipes.html:39
+msgid "Recipe"
+msgstr "Rezept"
 
-#: .\recipes\templates\recipes\recipes.html:23
-msgid "Cook"
-msgstr "Koch"
+#: .\recipes\templates\recipes\recipes.html:42
+msgid "Cousine"
+msgstr "Region"
 
-#: .\recipes\templates\recipes\recipes.html:25
-msgid "Created"
-msgstr "Erstellt"
+#, fuzzy
+#~| msgid "Recipes"
+#~ msgid "Add Recipe"
+#~ msgstr "Rezepte"
 
-#: .\recipes\templates\recipes\recipes.html:44
-msgid "New recipe"
-msgstr "Neues Rezept"
+#~ msgid "Recipe name"
+#~ msgstr "Rezeptname"
+
+#~ msgid "Portions"
+#~ msgstr "Portionen"
 
 #~ msgid "Cooks"
 #~ msgstr "Köche"

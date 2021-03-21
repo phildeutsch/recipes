@@ -104,12 +104,12 @@ def recipes(request):
 @login_required
 def add_recipe(request):
     if request.method == "POST":
-        form = RecipeForm(request.POST)
+        form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.user = request.user
             post.save()
-            return redirect('/dish/'+str(dish_id))
+            return redirect('/recipes')
     else:
         form = RecipeForm()
 

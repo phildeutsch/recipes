@@ -11,12 +11,13 @@
         <div class="card-body">
             <form method="POST" class="post-form" enctype="multipart/form-data"> 
                 {% csrf_token %}
-
                 {{ form|crispy }}
 
-                <button type="submit" value="Submit" class="btn btn-primary">{% trans 'OK' %}</button>
-                <a class="btn btn-primary" href="/">{% trans 'Back' %}</a>
-            </form>
+        </div>
+        <div class="card-footer">
+            <button type="submit" value="Submit" class="btn btn-primary">{% trans 'OK' %}</button>
+            <a class="btn btn-primary" href="/">{% trans 'Back' %}</a>
+        </form>
         </div>
     </div>
     {% if form.non_field_errors %}

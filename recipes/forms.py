@@ -14,10 +14,24 @@ class DishForm(ModelForm):
             "cuisine": _("Cuisine")
         }
 
+
 class RecipeForm(ModelForm):
     class Meta:
         model = Recipe
         exclude = ['user', 'dish', 'created', 'history']
+        labels = {
+            "name": _("Name"),
+            "servings": _("Servings"),
+            "ingredients": _("Ingredients"),
+            "text": _("Method"),
+            "course": _("Course"),
+            "cuisine": _("Cuisine"),
+            "vegetarian": _("Vegetarian"),
+            "meat": _("Meat"),
+            "fish": _("Fish"),
+            "picture": _("Picture")
+        }
+
 
 class GuestForm(ModelForm):
     class Meta:
