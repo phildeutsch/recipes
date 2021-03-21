@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load i18n %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-6">
+                    <h5>{% trans 'Recipes for' %} {{dish}}</h5>
+                </div>
+                <div class="col-6 text-end">
+                    <a class="btn btn-primary" href="/dishes">Back</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive" style="overflow: auto">
+                <table class="table">
+                    <thead>
+                        <tr style="border-top: hidden">
+                            <th>ID</th>
+                            <th>{% trans 'Cook' %}</th>
+                            <th>{% trans 'Name' %}</th>
+                            <th>{% trans 'Created' %}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for r in recipes %}
+                        <tr>
+                            <td> {{ r.id }} </td>
+                            <td> {{ r.user.username }} </td>
+                            <td> {{ r.name }} </td>
+                            <td> {{ r.created }} </td>
+                            <td><a href="/recipe/{{r.id}}" title="Lesen"><i class="far fa-file-alt"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-primary" href="/add_recipe/{{dish.id}}">{% trans 'New recipe' %}</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

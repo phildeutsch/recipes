@@ -14,11 +14,10 @@ class DishForm(ModelForm):
             "cuisine": _("Cuisine")
         }
 
-
 class RecipeForm(ModelForm):
     class Meta:
         model = Recipe
-        fields = ['name', 'servings', 'ingredients', 'text']
+        exclude = ['user', 'dish', 'created', 'history']
 
 class GuestForm(ModelForm):
     class Meta:
