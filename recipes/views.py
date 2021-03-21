@@ -4,7 +4,7 @@ from dateutil import parser
 
 from .models import Dish, Recipe, Guest, Activity
 from .forms import DishForm, RecipeForm, GuestForm, ActivityForm
-from .filters import DishFilter
+from .filters import DishFilter, RecipeFilter
 
 from accounts.models import User, Profile
 from accounts.forms import ProfileForm
@@ -82,31 +82,38 @@ def edit_dish(request, dish_id):
     context = {'form': form, 'dish': dish}
     return render(request, 'recipes/edit_dish.html', context)
 
-# Recipe views
 @login_required
-def recipes(request, dish_id):
+def dish_recipes(request, dish_id):
     dish = get_object_or_404(Dish, pk=dish_id)
     recipes = Recipe.objects.filter(dish=dish).all()
 
     context = {'dish': dish, 'recipes': recipes}
 
+    return render(request, 'recipes/dish_recipes.html', context)
+
+# Recipe views
+@login_required
+def recipes(request):
+    recipes = Recipe.objects.filter().all()
+    f = RecipeFilter(request.GET, queryset=recipes)
+
+    context = {'recipes': recipes, 'filter': f}
+
     return render(request, 'recipes/recipes.html', context)
 
 @login_required
-def add_recipe(request, dish_id):
-    dish = get_object_or_404(Dish, pk=dish_id)
+def add_recipe(request):
     if request.method == "POST":
         form = RecipeForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.dish = dish
             post.user = request.user
             post.save()
             return redirect('/dish/'+str(dish_id))
     else:
         form = RecipeForm()
 
-    return render(request, 'recipes/add_recipe.html', {'form': form, 'dish': dish})
+    return render(request, 'recipes/add_recipe.html', {'form': form})
 
 @login_required
 def delete_recipe(request, recipe_id):
@@ -123,7 +130,7 @@ def edit_recipe(request, recipe_id):
             post = form.save()
             return redirect('/recipe/' + str(recipe.id))
     else:
-        form = DishForm(instance=recipe)
+        form = RecipeForm(instance=recipe)
     
     context = {'form': form, 'recipe': recipe}
     return render(request, 'recipes/edit_recipe.html', context)

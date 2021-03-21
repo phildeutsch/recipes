@@ -6,3 +6,6 @@ class DishFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(lookup_expr='icontains')
     course = django_filters.ChoiceFilter(choices=Dish.DISH_COURSE_CHOICES, label=_("Course"))
     cuisine = django_filters.ChoiceFilter(choices=Dish.DISH_CUISINE_CHOICES, label=_("Cuisine"))
+
+class RecipeFilter(django_filters.FilterSet):
+    name = django_filters.CharFilter(lookup_expr='icontains')

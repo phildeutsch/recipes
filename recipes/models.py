@@ -33,11 +33,30 @@ class Dish(models.Model):
         return self.name
 
 class Recipe(models.Model):
+    COURSE_CHOICES = [
+        (1, _('First course')),
+        (2, _('Main course')),
+        (3, _('Dessert')),
+        (4, _('Cocktail'))]
+    CUISINE_CHOICES = [
+        (1, _('Austrian')),
+        (2, _('British')),
+        (3, _('Italian')),
+        (4, _('American'))
+    ]
+
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    dish = models.ForeignKey(Dish, on_delete=models.CASCADE)
+    dish = models.ForeignKey(Dish, on_delete=models.CASCADE, null=True, blank=True)
 
     created = models.DateField(auto_now_add=True)
 
+    course = models.IntegerField(choices=COURSE_CHOICES, blank=True, null=True)
+    cuisine = models.IntegerField(choices=CUISINE_CHOICES, blank=True, null=True)
+    vegetarian = models.BooleanField()
+    meat = models.BooleanField()
+    fish = models.BooleanField()
+
+    picture = models.ImageField(null=True, blank=True, upload_to=RandomFileName('recipes'))
     name = models.CharField(max_length=256)
     servings = models.IntegerField()
     ingredients = models.TextField()

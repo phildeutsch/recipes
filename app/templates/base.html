@@ -18,11 +18,11 @@
         </li>
         <li class="nav-item ps-2">
           {% if 'recipe' in request.path or 'dish' in request.path %}
-          <a class="nav-link d-none d-lg-block active" href="/dishes">{% trans 'Cook book' %}</a>
-          <a class="nav-link d-lg-none active" href="/dishes"><i class="fas fa-book"></i></a>
+          <a class="nav-link d-none d-lg-block active" href="/recipes">{% trans 'Cook book' %}</a>
+          <a class="nav-link d-lg-none active" href="/recipes"><i class="fas fa-book"></i></a>
         {% else %}
-            <a class="nav-link d-none d-lg-block" href="/dishes">{% trans 'Cook book' %}</a>
-            <a class="nav-link d-lg-none" href="/dishes"><i class="fas fa-book"></i></a>
+            <a class="nav-link d-none d-lg-block" href="/recipes">{% trans 'Cook book' %}</a>
+            <a class="nav-link d-lg-none" href="/recipes"><i class="fas fa-book"></i></a>
 
           {% endif %}
         </li>
